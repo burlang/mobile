@@ -20,7 +20,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const BuryatNamesScreen());
 
       case BURYAT_NAME:
-        return MaterialPageRoute(builder: (_) => const BuryatNameScreen());
+        return MaterialPageRoute(
+            builder: (_) => BuryatNameScreen(
+                  letter: arg,
+                ));
 
       case BURYAT_NAME_DISCRIPTION:
         return MaterialPageRoute(

@@ -32,8 +32,9 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                 itemBuilder: (BuildContext ctx, index) {
                   return OutlinedButton(
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushNamed(RouteGenerator.BURYAT_NAME);
+                      Navigator.of(context).pushNamed(
+                          RouteGenerator.BURYAT_NAME,
+                          arguments: Constants.letters_names[index]);
                     },
                     child: Text(
                       Constants.letters_names[index],

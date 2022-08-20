@@ -5,7 +5,7 @@ import 'package:burlang_demo/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 class BuryatNameDiscriptionScreen extends StatelessWidget {
-  final buryat_name;
+  final String buryat_name;
   const BuryatNameDiscriptionScreen({Key key, this.buryat_name})
       : super(key: key);
 
@@ -22,7 +22,7 @@ class BuryatNameDiscriptionScreen extends StatelessWidget {
               child: ListTile(
                 title: Text(
                   snapshot.data.name,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                 ),
                 subtitle: Card(
                   color: Colors.green[100],
