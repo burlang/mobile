@@ -4,14 +4,14 @@ import 'package:burlang_demo/widgets/search_dictionary_word_widget.dart';
 import 'package:flutter/material.dart';
 import '../widgets/appbar_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
+class SearchWordScreen extends StatefulWidget {
+  const SearchWordScreen({Key key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SearchWordScreen> createState() => _SearchWordScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SearchWordScreenState extends State<SearchWordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

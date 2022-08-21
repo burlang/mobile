@@ -1,4 +1,4 @@
-import 'package:burlang_demo/screens/home_screen.dart';
+import 'package:burlang_demo/screens/search_word_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'config/router.dart';
@@ -16,6 +16,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         onGenerateRoute: RouteGenerator.generateRoute,
-        home: HomeScreen());
+        home: SearchWordScreen());
   }
 }

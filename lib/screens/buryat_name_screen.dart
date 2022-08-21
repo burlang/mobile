@@ -1,83 +1,94 @@
 import 'package:burlang_demo/api/burlang_api.dart';
-import 'package:burlang_demo/config/router.dart';
-import 'package:burlang_demo/constants/constants.dart';
-import 'package:burlang_demo/models/buryat_names.dart';
+import 'package:burlang_demo/models/buryat_name.dart';
+import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
-import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
+import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
 import 'package:flutter/material.dart';
 
-class BuryatNameScreen extends StatefulWidget {
-  final String letter;
-  const BuryatNameScreen({Key key, this.letter}) : super(key: key);
-
-  @override
-  State<BuryatNameScreen> createState() => _BuryatNameScreenState();
-}
-
-class _BuryatNameScreenState extends State<BuryatNameScreen> {
-  List<BuryatNames> names = [];
-  String query = '';
-
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
+class BuryatNameScreen extends StatelessWidget {
+  final String buryat_name;
+  const BuryatNameScreen({Key key, this.buryat_name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 55, 119, 151),
-          elevation: 0.0,
-          title: const Text('Burlang'),
-        ),
-        drawer: const DrawerWidget(),
-        body: Column(
-          children: [
-            SearchBuryatNameWidget(
-              text: query,
-              onChanged: searchName,
-              hintText: 'Введите имя',
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final sortedIndex = index + 1;
-                  return ListTile(
-                    title: Text(names[index].name),
-                    trailing: Text(sortedIndex.toString()),
-                    onTap: () {
-                      Navigator.of(context).pushNamed(
-                          RouteGenerator.BURYAT_NAME_DISCRIPTION,
-                          arguments: names[index].name);
-                    },
-                  );
-                },
-                itemCount: names.length,
+      appBar: const AppBarWidget(),
+      drawer: const DrawerWidget(),
+      body: FutureBuilder<BuryatName>(
+        builder: ((context, snapshot) {
+          if (snapshot.hasData) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text(
+                  snapshot.data.name,
+                  style: const TextStyle(fontSize: 24),
+                ),
+                subtitle: Card(
+                  color: Colors.green[100],
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: SizedBox(
+                      height: 190,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              snapshot.data.description,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(snapshot.data.note),
+                            const SizedBox(height: 4),
+                            snapshot.data.male == 1 && snapshot.data.female == 1
+                                ? Row(
+                                    children: const [
+                                      GenderNameContainerWidget(
+                                        gender: 'Мужское имя',
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GenderNameContainerWidget(
+                                        gender: 'Женское имя',
+                                      ),
+                                    ],
+                                  )
+                                : snapshot.data.male == 1
+                                    ? const GenderNameContainerWidget(
+                                        gender: 'Мужское имя',
+                                      )
+                                    : snapshot.data.female == 1
+                                        ? const GenderNameContainerWidget(
+                                            gender: 'Женское имя',
+                                          )
+                                        : null,
+                          ]),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
-        ));
-  }
+            );
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-  searchName(String query) async {
-    final buryatNames = await BurlangApi().getAllNames(widget.letter, query);
-
-    if (!mounted) return;
-
-    setState(() {
-      this.query = query;
-      names = buryatNames;
-    });
-  }
-
-  Future init() async {
-    final incomeNames = await BurlangApi().getAllNames(widget.letter, query);
-    setState(() {
-      names = incomeNames;
-    });
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Ошибка'),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }),
+        future: BurlangApi().getName(buryat_name),
+      ),
+    );
   }
 }
-
-

@@ -1,7 +1,7 @@
-import 'package:burlang_demo/screens/buryat_name_discription_screen.dart';
-import 'package:burlang_demo/screens/buryat_names_screen.dart';
-import 'package:burlang_demo/screens/home_screen.dart';
 import 'package:burlang_demo/screens/buryat_name_screen.dart';
+import 'package:burlang_demo/screens/buryat_alphabets_screen.dart';
+import 'package:burlang_demo/screens/search_word_screen.dart';
+import 'package:burlang_demo/screens/buryat_names_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -14,23 +14,23 @@ class RouteGenerator {
     final arg = settings.arguments;
     switch (settings.name) {
       case MAIN:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const SearchWordScreen());
 
       case BURYAT_NAMES:
-        return MaterialPageRoute(builder: (_) => const BuryatNamesScreen());
+        return MaterialPageRoute(builder: (_) => const BuryatAlphabetsScreen());
 
       case BURYAT_NAME:
         return MaterialPageRoute(
-            builder: (_) => BuryatNameScreen(
+            builder: (_) => BuryatNamesScreen(
                   letter: arg,
                 ));
 
       case BURYAT_NAME_DISCRIPTION:
         return MaterialPageRoute(
-            builder: (_) => BuryatNameDiscriptionScreen(
+            builder: (_) => BuryatNameScreen(
                   buryat_name: arg,
                 ));
     }
-    return MaterialPageRoute(builder: (_) => const HomeScreen());
+    return MaterialPageRoute(builder: (_) => const SearchWordScreen());
   }
 }

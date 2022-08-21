@@ -1,7 +1,6 @@
 import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/models/buryat_translation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchDictionaryWordWidget extends StatefulWidget {
   const SearchDictionaryWordWidget({
