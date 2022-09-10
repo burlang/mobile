@@ -13,7 +13,6 @@ class BuryatNameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWidget(),
-      drawer: const DrawerWidget(),
       body: FutureBuilder<BuryatName>(
         builder: ((context, snapshot) {
           if (snapshot.hasData) {

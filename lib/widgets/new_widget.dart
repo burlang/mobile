@@ -39,8 +39,8 @@ class NewWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   const NewWidget({
-     this.title,
-     this.subtitle,
+    this.title,
+    this.subtitle,
     Key key,
   }) : super(key: key);
 

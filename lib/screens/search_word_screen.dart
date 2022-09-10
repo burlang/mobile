@@ -22,6 +22,7 @@ class _SearchWordScreenState extends State<SearchWordScreen> {
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: ListView(
+              shrinkWrap: true,
               children: const [SearchDictionaryWordWidget(), NewsWidget()]),
         ),
       ),

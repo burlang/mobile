@@ -1,5 +1,7 @@
+import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/screens/search_word_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/router.dart';
 
@@ -12,10 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        onGenerateRoute: RouteGenerator.generateRoute,
-        home: SearchWordScreen());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BurlangBloc>(create: (_)=> BurlangBloc())
+      ],
+      child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          onGenerateRoute: RouteGenerator.generateRoute,
+          home: SearchWordScreen()),
+    );
   }
 }
