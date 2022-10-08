@@ -5,16 +5,31 @@ abstract class BurlangState {}
 
 class BurlangInitial extends BurlangState {}
 
-class BurlangDataSearchNamesState extends BurlangState {
+class BurlangInitializedNamesState extends BurlangState {
+  final List<BuryatNames> incomeNames;
+  BurlangInitializedNamesState({this.incomeNames});
+}
+
+class BurlangDataSearchedNamesState extends BurlangState {
   final String query;
   final List<BuryatNames> searchedNames;
-  BurlangDataSearchNamesState({this.searchedNames, this.query});
+  BurlangDataSearchedNamesState({this.searchedNames, this.query});
 }
 
-class BurlangDataSearchBuryatWordState extends BurlangState {
-  final List<BuryatSearchWords> buryatWords;
+class BurlangDataSearchedBuryatWordState extends BurlangState {
+  final List<SearchWords> buryatWords;
   final List<Translations> translationList;
-  BurlangDataSearchBuryatWordState(this.buryatWords, this.translationList);
+  BurlangDataSearchedBuryatWordState(this.buryatWords, this.translationList);
 }
 
-class BurlangErrorState extends BurlangState {}
+class BurlangDataSearchedRussianWordState extends BurlangState {
+  final List<SearchWords> russianWords;
+  final List<Translations> translationList;
+  BurlangDataSearchedRussianWordState(this.russianWords, this.translationList);
+}
+
+class BurlangErrorState extends BurlangState {
+  final bool isError;
+  final String text;
+  BurlangErrorState({this.isError, this.text});
+}

@@ -1,13 +1,13 @@
 class Translations {
-  List<BuryatTranslation> translations;
+  List<LanguageTranslation> translations;
 
   Translations({this.translations});
 
   Translations.fromJson(Map<String, dynamic> json) {
     if (json['translations'] != null) {
-      translations = <BuryatTranslation>[];
+      translations = <LanguageTranslation>[];
       json['translations'].forEach((v) {
-        translations.add(new BuryatTranslation.fromJson(v));
+        translations.add(new LanguageTranslation.fromJson(v));
       });
     }
   }
@@ -21,12 +21,12 @@ class Translations {
   }
 }
 
-class BuryatTranslation {
+class LanguageTranslation {
   String value;
 
-  BuryatTranslation({this.value});
+  LanguageTranslation({this.value});
 
-  BuryatTranslation.fromJson(Map<String, dynamic> json) {
+  LanguageTranslation.fromJson(Map<String, dynamic> json) {
     value = json['value'];
   }
 

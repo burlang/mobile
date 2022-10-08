@@ -2,6 +2,7 @@ import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
+import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
@@ -33,7 +34,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
         ? const LoaderWidget()
         : BlocListener<BurlangBloc, BurlangState>(
             listener: (context, state) {
-              if (state is BurlangDataSearchNamesState) {
+              if (state is BurlangDataSearchedNamesState) {
                 if (!mounted) return;
 
                 setState(() {
@@ -43,12 +44,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
               }
             },
             child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: const Color.fromARGB(255, 55, 119, 151),
-                  elevation: 0.0,
-                  title: const Text('Burlang'),
-                ),
-                drawer: const DrawerWidget(),
+                appBar: const AppBarWidget(),
                 body: Column(
                   children: [
                     SearchBuryatNameWidget(
@@ -79,14 +75,16 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
   }
 
   searchName(String query) {
-    BlocProvider.of<BurlangBloc>(context).add(
-        BurlangOnValueSearchNamesChanged(letter: widget.letter, query: query));
+    BlocProvider.of<BurlangBloc>(context)
+        .add(BurlangSearchName(letter: widget.letter, query: query));
   }
 
   Future<void> init() async {
     setState(() {
       isLoading = true;
     });
+
+    final test = await BurlangApi().getRussianWord('Чай');
 
     final incomeNames = await BurlangApi().getAllNames(widget.letter, query);
 

@@ -3,14 +3,24 @@ part of 'burlang_bloc.dart';
 @immutable
 abstract class BurlangEvent {}
 
-class BurlangOnValueSearchNamesChanged extends BurlangEvent{
+class BurlangInitializeNames extends BurlangEvent {
   final String letter;
   final String query;
-  BurlangOnValueSearchNamesChanged({this.letter, this.query});
-
+  BurlangInitializeNames({this.letter, this.query});
 }
 
-class BurlangOnValueSearchWordChanged extends BurlangEvent {
-  final TextEditingController textEditingController;
-  BurlangOnValueSearchWordChanged({this.textEditingController});
+class BurlangSearchName extends BurlangEvent {
+  final String letter;
+  final String query;
+  BurlangSearchName({this.letter, this.query});
+}
+
+class BurlangSearchBuryatWord extends BurlangEvent {
+  final String textEditingController;
+  BurlangSearchBuryatWord({this.textEditingController});
+}
+
+class BurlangSearchRussianWord extends BurlangEvent {
+  final String textEditingController;
+  BurlangSearchRussianWord({this.textEditingController});
 }

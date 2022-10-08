@@ -13,9 +13,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       title: const Text('Burlang'),
     );
   }
-  
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-  
 }
-

@@ -28,7 +28,7 @@ class BuryatNameScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: SizedBox(
-                      height: 190,
+                      height: MediaQuery.of(context).size.height / 3,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,9 +38,9 @@ class BuryatNameScreen extends StatelessWidget {
                               style:
                                   const TextStyle(fontWeight: FontWeight.w600),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 9),
                             Text(snapshot.data.note),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 9),
                             snapshot.data.male == 1 && snapshot.data.female == 1
                                 ? Row(
                                     children: const [

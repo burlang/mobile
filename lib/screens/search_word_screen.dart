@@ -12,6 +12,7 @@ class SearchWordScreen extends StatefulWidget {
 }
 
 class _SearchWordScreenState extends State<SearchWordScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

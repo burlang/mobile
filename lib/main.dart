@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<BurlangBloc>(create: (_)=> BurlangBloc())
-      ],
+      providers: [BlocProvider<BurlangBloc>(create: (_) => BurlangBloc())],
       child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
+          
           onGenerateRoute: RouteGenerator.generateRoute,
           home: SearchWordScreen()),
     );

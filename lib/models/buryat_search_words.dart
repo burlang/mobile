@@ -1,8 +1,8 @@
-class BuryatSearchWords {
+class SearchWords {
   final String value;
-  BuryatSearchWords({this.value});
+  SearchWords({this.value});
 
-  factory BuryatSearchWords.fromJson(Map<String, dynamic> json) {
-    return BuryatSearchWords(value: json['value']);
+  factory SearchWords.fromJson(Map<String, dynamic> json) {
+    return SearchWords(value: json['value']);
   }
 }
