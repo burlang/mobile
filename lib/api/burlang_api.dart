@@ -4,9 +4,11 @@ import 'package:burlang_demo/models/buryat_name.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
 import 'package:burlang_demo/models/buryat_search_words.dart';
 import 'package:burlang_demo/models/language_translation.dart';
+import 'package:burlang_demo/models/news.dart';
 import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class BurlangApi {
   Future<BuryatName> getName(String name) async {
@@ -51,6 +53,7 @@ class BurlangApi {
     } else {
       debugPrint(response.body);
     }
+
     return null;
   }
 
@@ -62,8 +65,6 @@ class BurlangApi {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-
-    final body = response.body;
 
     if (response.statusCode == 200) {
       return Translations.fromJson(jsonDecode(response.body));
@@ -81,8 +82,6 @@ class BurlangApi {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-
-    final body = response.body;
 
     if (response.statusCode == 200) {
       final List jsonResponse = jsonDecode(response.body);
@@ -102,8 +101,6 @@ class BurlangApi {
       },
     );
 
-    final body = response.body;
-
     if (response.statusCode == 200) {
       return Translations.fromJson(jsonDecode(response.body));
     } else {
@@ -121,14 +118,31 @@ class BurlangApi {
       },
     );
 
-    final body = response.body;
-
     if (response.statusCode == 200) {
       final List jsonResponse = jsonDecode(response.body);
       return jsonResponse.map((e) => SearchWords.fromJson(e)).toList();
     } else {
       debugPrint(response.body);
     }
+    return null;
+  }
+
+  Future<List<News>> getNews() async {
+    final response = await http.get(
+      Uri.parse('http://burlang.ru/api/v1/news?page=1'),
+      headers: <String, String>{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final List jsonResponse = jsonDecode(response.body);
+      return jsonResponse.map((e) => News.fromJson(e)).toList();
+    } else {
+      debugPrint(response.body);
+    }
+
     return null;
   }
 }
