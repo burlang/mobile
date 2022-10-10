@@ -5,11 +5,6 @@ abstract class BurlangState {}
 
 class BurlangInitial extends BurlangState {}
 
-class BurlangInitializedNewsState extends BurlangState {
-  final List<News> incomeNews;
-  BurlangInitializedNewsState({this.incomeNews});
-}
-
 class BurlangDataSearchedNamesState extends BurlangState {
   final String query;
   final List<BuryatNames> searchedNames;

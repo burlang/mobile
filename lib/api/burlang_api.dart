@@ -128,19 +128,23 @@ class BurlangApi {
   }
 
   Future<List<News>> getNews() async {
-    final response = await http.get(
-      Uri.parse('http://burlang.ru/api/v1/news?page=1'),
-      headers: <String, String>{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
+    try {
+      final response = await http.get(
+        Uri.parse('http://burlang.ru/api/v1/news?page=1'),
+        headers: <String, String>{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
 
-    if (response.statusCode == 200) {
-      final List jsonResponse = jsonDecode(response.body);
-      return jsonResponse.map((e) => News.fromJson(e)).toList();
-    } else {
-      debugPrint(response.body);
+      if (response.statusCode == 200) {
+        final List jsonResponse = jsonDecode(response.body);
+        return jsonResponse.map((e) => News.fromJson(e)).toList();
+      } else {
+        debugPrint(response.body);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
     }
 
     return null;
