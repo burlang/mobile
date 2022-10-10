@@ -3,11 +3,13 @@ part of 'burlang_bloc.dart';
 @immutable
 abstract class BurlangEvent {}
 
-class BurlangInitializeNames extends BurlangEvent {
-  final String letter;
-  final String query;
-  BurlangInitializeNames({this.letter, this.query});
-}
+class BurlangInitializeNews extends BurlangEvent {}
+
+// class BurlangInitializeNames extends BurlangEvent {
+//  final String letter;
+//  final String query;
+//  BurlangInitializeNames({this.letter, this.query});
+// }
 
 class BurlangSearchName extends BurlangEvent {
   final String letter;

@@ -125,21 +125,36 @@ class _SearchDictionaryWordWidgetState
                             hintText: isBur
                                 ? Constants.input_bur
                                 : Constants.input_rus),
-                        onChanged: (val) {
-                          try {
+                        onChanged: (val) async {
+                          if (val == '') {
                             setState(() {
                               isLoading = true;
                               isError = false;
                             });
-                            isBur
-                                ? BlocProvider.of<BurlangBloc>(context).add(
-                                    BurlangSearchBuryatWord(
-                                        textEditingController: val))
-                                : BlocProvider.of<BurlangBloc>(context).add(
-                                    BurlangSearchRussianWord(
-                                        textEditingController: val));
-                          } catch (e) {
-                            debugPrint(e);
+                            await Future.delayed(
+                                    const Duration(microseconds: 1))
+                                .then((_) {
+                              setState(() {
+                                isLoading = false;
+                                isError = false;
+                              });
+                            });
+                          } else {
+                            try {
+                              setState(() {
+                                isLoading = true;
+                                isError = false;
+                              });
+                              isBur
+                                  ? BlocProvider.of<BurlangBloc>(context).add(
+                                      BurlangSearchBuryatWord(
+                                          textEditingController: val))
+                                  : BlocProvider.of<BurlangBloc>(context).add(
+                                      BurlangSearchRussianWord(
+                                          textEditingController: val));
+                            } catch (e) {
+                              debugPrint(e);
+                            }
                           }
                         },
                       ),
@@ -237,8 +252,8 @@ class _SearchDictionaryWordWidgetState
             textFocusNode.requestFocus();
             textController.selection = TextSelection.fromPosition(
                 TextPosition(offset: textController.text.length));
-            BlocProvider.of<BurlangBloc>(context).add(
-                BurlangSearchBuryatWord(textEditingController: textController.text));
+            BlocProvider.of<BurlangBloc>(context).add(BurlangSearchBuryatWord(
+                textEditingController: textController.text));
           } catch (e) {
             debugPrint(e);
           }
