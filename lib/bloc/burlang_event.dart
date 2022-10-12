@@ -5,12 +5,6 @@ abstract class BurlangEvent {}
 
 // class BurlangInitializeNews extends BurlangEvent {}
 
-// class BurlangInitializeNames extends BurlangEvent {
-//  final String letter;
-//  final String query;
-//  BurlangInitializeNames({this.letter, this.query});
-// }
-
 class BurlangSearchName extends BurlangEvent {
   final String letter;
   final String query;

@@ -3,7 +3,6 @@ import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
 import 'package:burlang_demo/models/buryat_search_words.dart';
 import 'package:burlang_demo/models/language_translation.dart';
-import 'package:burlang_demo/models/news.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
@@ -44,11 +43,13 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
             await BurlangApi().getAllNames(event.letter, event.query);
         emit(BurlangDataSearchedNamesState(
             searchedNames: searchedNames, query: event.query));
-      } on ClientException {
+      } on ClientException catch (e) {
         emit(BurlangErrorState(
             isError: true, text: 'Проверьте подключение к сети Интернет'));
-      } catch (e) {
         debugPrint(e.message);
+      } catch (e) {
+        emit(BurlangErrorState(isError: true, text: 'Произошла ошибка'));
+        debugPrint(e.toString());
       }
     });
 
@@ -71,11 +72,13 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           emit(BurlangErrorState(
               isError: true, text: 'Подходящее слово не найдено'));
         }
-      } on ClientException {
+      } on ClientException catch (e) {
         emit(BurlangErrorState(
             isError: true, text: 'Проверьте подключение к сети Интернет'));
-      } catch (e) {
         debugPrint(e.message);
+      } catch (e) {
+        emit(BurlangErrorState(isError: true, text: 'Произошла ошибка'));
+        debugPrint(e.toString());
       }
     });
 
@@ -99,11 +102,13 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           emit(BurlangErrorState(
               isError: true, text: 'Подходящее слово не найдено'));
         }
-      } on ClientException {
+      } on ClientException catch (e) {
         emit(BurlangErrorState(
             isError: true, text: 'Проверьте подключение к сети Интернет'));
-      } catch (e) {
         debugPrint(e.message);
+      } catch (e) {
+        emit(BurlangErrorState(isError: true, text: 'Произошла ошибка'));
+        debugPrint(e.toString());
       }
     });
   }

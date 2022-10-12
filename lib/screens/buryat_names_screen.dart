@@ -26,6 +26,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
   List<BuryatNames> names = [];
 
   String query = '';
+  String textError = '';
 
   @override
   void initState() {
@@ -51,18 +52,18 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
             child: Scaffold(
                 appBar: const AppBarWidget(),
                 body: isError
-                    ? const Center(
+                    ? Center(
                         child: Padding(
-                            padding: EdgeInsets.only(top: 20, bottom: 20),
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
                             child: Card(
                                 elevation: 1.0,
-                                color: Color.fromARGB(255, 242, 222, 222),
+                                color: const Color.fromARGB(255, 242, 222, 222),
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       vertical: 20, horizontal: 40),
                                   child: Text(
-                                    'Проверьте подключение к интернету',
-                                    style: TextStyle(
+                                    textError,
+                                    style: const TextStyle(
                                         color:
                                             Color.fromARGB(255, 169, 69, 68)),
                                   ),
@@ -118,9 +119,15 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
       setState(() {
         isLoading = false;
         isError = true;
+        textError = 'Проверьте подключение к сети Интернет';
       });
       debugPrint(e.message);
     } catch (e) {
+      setState(() {
+        isLoading = false;
+        isError = true;
+        textError = 'Произошла ошибка';
+      });
       debugPrint(e.toString());
     }
   }
