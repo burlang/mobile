@@ -26,7 +26,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
   List<BuryatNames> names = [];
 
   String query = '';
-  String textError = '';
+  String errorText = '';
 
   @override
   void initState() {
@@ -48,6 +48,14 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                   names = state.searchedNames;
                 });
               }
+
+              if (state is BurlangErrorState) {
+                setState(() {
+                  isLoading = false;
+                  isError = state.isError;
+                  errorText = state.text;
+                });
+              }
             },
             child: Scaffold(
                 appBar: const AppBarWidget(),
@@ -62,7 +70,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 20, horizontal: 40),
                                   child: Text(
-                                    textError,
+                                    errorText,
                                     style: const TextStyle(
                                         color:
                                             Color.fromARGB(255, 169, 69, 68)),
@@ -119,14 +127,14 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
       setState(() {
         isLoading = false;
         isError = true;
-        textError = 'Проверьте подключение к сети Интернет';
+        errorText = 'Проверьте подключение к сети Интернет';
       });
       debugPrint(e.message);
     } catch (e) {
       setState(() {
         isLoading = false;
         isError = true;
-        textError = 'Произошла ошибка';
+        errorText = 'Произошла ошибка';
       });
       debugPrint(e.toString());
     }

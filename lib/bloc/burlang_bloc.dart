@@ -13,16 +13,20 @@ part 'burlang_state.dart';
 class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
   BurlangBloc() : super(BurlangInitial()) {
     
-    /*  on<BurlangInitializeNames>((event, emit)async {
-    try {
-         final incomeNames = await BurlangApi().getAllNames(event.letter, event.query);
+    /* on<BurlangInitializeNames>((event, emit) async {
+      try {
+        final incomeNames =
+            await BurlangApi().getAllNames(event.letter, event.query);
+            
         emit(BurlangInitializedNamesState(incomeNames: incomeNames));
-     } on ClientException {
-      emit(BurlangErrorState(
-         isError: true, text: 'Проверьте подключение к сети Интернет'));
-     catch (e) {
-     debugPrint(e.message);
-     }
+      } on ClientException catch (e) {
+        emit(BurlangErrorState(
+            isError: true, text: 'Проверьте подключение к сети Интернет'));
+        debugPrint(e.message);
+      } catch (e) {
+        emit(BurlangErrorState(isError: true, text: 'Произошла ошибка'));
+        debugPrint(e.toString());ы
+      }
     });
 
     on<BurlangInitializeNews>((event, emit) async {
