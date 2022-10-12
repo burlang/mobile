@@ -5,6 +5,11 @@ abstract class BurlangState {}
 
 class BurlangInitial extends BurlangState {}
 
+class BurlangInitializedNewsState extends BurlangState {
+  final List<News> incomeNews;
+  BurlangInitializedNewsState({this.incomeNews});
+}
+
 class BurlangDataSearchedNamesState extends BurlangState {
   final String query;
   final List<BuryatNames> searchedNames;
@@ -21,6 +26,12 @@ class BurlangDataSearchedRussianWordState extends BurlangState {
   final List<SearchWords> russianWords;
   final List<Translations> translationList;
   BurlangDataSearchedRussianWordState(this.russianWords, this.translationList);
+}
+
+class BurlangErrorFindingWordState extends BurlangState{
+  final bool isError;
+  final String text;
+  BurlangErrorFindingWordState({this.isError, this.text});
 }
 
 class BurlangErrorState extends BurlangState {

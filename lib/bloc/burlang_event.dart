@@ -3,7 +3,7 @@ part of 'burlang_bloc.dart';
 @immutable
 abstract class BurlangEvent {}
 
-// class BurlangInitializeNews extends BurlangEvent {}
+class BurlangInitializeNews extends BurlangEvent {}
 
 class BurlangSearchName extends BurlangEvent {
   final String letter;

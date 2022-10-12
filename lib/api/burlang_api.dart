@@ -128,8 +128,7 @@ class BurlangApi {
   }
 
   Future<List<News>> getNews() async {
-    try {
-      final response = await http.get(
+     final response = await http.get(
         Uri.parse('http://burlang.ru/api/v1/news?page=1'),
         headers: <String, String>{
           'Accept': 'application/json',
@@ -143,9 +142,6 @@ class BurlangApi {
       } else {
         debugPrint(response.body);
       }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
 
     return null;
   }

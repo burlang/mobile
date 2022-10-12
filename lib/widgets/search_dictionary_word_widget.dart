@@ -58,6 +58,14 @@ class _SearchDictionaryWordWidgetState
           });
         }
 
+        if (state is BurlangErrorFindingWordState) {
+          setState(() {
+            isLoading = false;
+            isError = state.isError;
+            errorText = state.text;
+          });
+        }
+
         if (state is BurlangErrorState) {
           setState(() {
             isLoading = false;
