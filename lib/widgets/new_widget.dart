@@ -1,6 +1,7 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/models/news.dart';
+import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -34,6 +35,7 @@ class _NewsWidgetState extends State<NewsWidget> {
         if (state is BurlangInitializedNewsState) {
           setState(() {
             isLoading = false;
+            isError = false;
             news = state.incomeNews;
           });
         }
@@ -46,13 +48,8 @@ class _NewsWidgetState extends State<NewsWidget> {
         }
       },
       child: isLoading
-          ? const Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: CircularProgressIndicator(
-                  color: Constants.color,
-                ),
-              ),
+          ? const LoaderWidget(
+              padding: EdgeInsets.only(top: 20),
             )
           : isError
               ? Container()

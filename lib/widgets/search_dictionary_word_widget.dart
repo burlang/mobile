@@ -2,6 +2,7 @@ import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/models/buryat_search_words.dart';
 import 'package:burlang_demo/models/language_translation.dart';
+import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +21,7 @@ class _SearchDictionaryWordWidgetState
   List<SearchWords> words = [];
   List<Translations> translations = [];
   String errorText = '';
+  String query = '';
 
   final _formKey = GlobalKey<FormState>();
 
@@ -43,7 +45,9 @@ class _SearchDictionaryWordWidgetState
         if (state is BurlangDataSearchedBuryatWordState) {
           if (!mounted) return;
           setState(() {
+            query = state.query;
             isLoading = false;
+            isError = false;
             words = state.buryatWords;
             translations = state.translationList;
           });
@@ -52,13 +56,25 @@ class _SearchDictionaryWordWidgetState
         if (state is BurlangDataSearchedRussianWordState) {
           if (!mounted) return;
           setState(() {
+            query = state.query;
             isLoading = false;
+            isError = false;
             words = state.russianWords;
             translations = state.translationList;
           });
         }
 
+        // from refresh indicator in main screen
+        if (state is BurlangInitializedNewsState) {
+          if (!mounted) return;
+          setState(() {
+            isLoading = false;
+            isError = false;
+          });
+        }
+
         if (state is BurlangErrorFindingWordState) {
+          if (!mounted) return;
           setState(() {
             isLoading = false;
             isError = state.isError;
@@ -67,6 +83,7 @@ class _SearchDictionaryWordWidgetState
         }
 
         if (state is BurlangErrorState) {
+          if (!mounted) return;
           setState(() {
             isLoading = false;
             isError = state.isError;
@@ -92,6 +109,7 @@ class _SearchDictionaryWordWidgetState
                   IconButton(
                       onPressed: () {
                         setState(() {
+                          textController.text = '';
                           isBur = !isBur;
                         });
                       },
@@ -107,11 +125,8 @@ class _SearchDictionaryWordWidgetState
                 ]),
               ),
               Padding(
-                padding: EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                    bottom: textController.text == '' ? 25 : 5,
-                    top: 10),
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, bottom: 10, top: 10),
                 child: Row(
                   children: [
                     Flexible(
@@ -144,22 +159,18 @@ class _SearchDictionaryWordWidgetState
                                 .then((_) {
                               setState(() {
                                 isLoading = false;
-                                isError = false;
                               });
                             });
                           } else {
                             try {
                               setState(() {
                                 isLoading = true;
-                                isError = false;
                               });
                               isBur
-                                  ? BlocProvider.of<BurlangBloc>(context).add(
-                                      BurlangSearchBuryatWord(
-                                          textEditingController: val))
+                                  ? BlocProvider.of<BurlangBloc>(context)
+                                      .add(BurlangSearchBuryatWord(query: val))
                                   : BlocProvider.of<BurlangBloc>(context).add(
-                                      BurlangSearchRussianWord(
-                                          textEditingController: val));
+                                      BurlangSearchRussianWord(query: val));
                             } catch (e) {
                               debugPrint(e);
                             }
@@ -192,14 +203,8 @@ class _SearchDictionaryWordWidgetState
                 ),
               ),
               isLoading
-                  ? const Padding(
+                  ? const LoaderWidget(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
-                      child: SizedBox(
-                        height: 40,
-                        width: 40,
-                        child:
-                            CircularProgressIndicator(color: Constants.color),
-                      ),
                     )
                   : isError
                       ? Padding(
@@ -255,13 +260,12 @@ class _SearchDictionaryWordWidgetState
             setState(() {
               textController.text += letter;
               isLoading = true;
-              isError = false;
             });
             textFocusNode.requestFocus();
             textController.selection = TextSelection.fromPosition(
                 TextPosition(offset: textController.text.length));
-            BlocProvider.of<BurlangBloc>(context).add(BurlangSearchBuryatWord(
-                textEditingController: textController.text));
+            BlocProvider.of<BurlangBloc>(context)
+                .add(BurlangSearchBuryatWord(query: textController.text));
           } catch (e) {
             debugPrint(e);
           }

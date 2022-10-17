@@ -13,12 +13,10 @@ part 'burlang_state.dart';
 
 class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
   BurlangBloc() : super(BurlangInitial()) {
-    
-    /* on<BurlangInitializeNames>((event, emit) async {
+    on<BurlangInitializeNames>((event, emit) async {
       try {
         final incomeNames =
             await BurlangApi().getAllNames(event.letter, event.query);
-            
         emit(BurlangInitializedNamesState(incomeNames: incomeNames));
       } on ClientException catch (e) {
         emit(BurlangErrorState(
@@ -28,14 +26,13 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
         emit(BurlangErrorState(isError: true, text: 'Произошла ошибка'));
         debugPrint(e.toString());
       }
-    }); 
-    */
+    });
 
     on<BurlangInitializeNews>((event, emit) async {
       try {
         final incomeNews = await BurlangApi().getNews();
         emit(BurlangInitializedNewsState(incomeNews: incomeNews));
-      } on ClientException catch(e) {
+      } on ClientException catch (e) {
         emit(BurlangErrorState(
             isError: true, text: 'Проверьте подключение к сети Интернет'));
         debugPrint(e.message);
@@ -64,7 +61,7 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
     on<BurlangSearchBuryatWord>((event, emit) async {
       try {
         final buryatwords =
-            await BurlangApi().getBuryatWord(event.textEditingController);
+            await BurlangApi().getBuryatWord(event.query.trim());
 
         final List<Translations> translationList = [];
 
@@ -74,9 +71,10 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           translationList.add(buryatTransation);
         }
 
-        emit(BurlangDataSearchedBuryatWordState(buryatwords, translationList));
+        emit(BurlangDataSearchedBuryatWordState(
+            event.query, buryatwords, translationList));
 
-        if (buryatwords.isEmpty && event.textEditingController != '') {
+        if (buryatwords.isEmpty && event.query != '') {
           emit(BurlangErrorFindingWordState(
               isError: true, text: 'Подходящее слово не найдено'));
         }
@@ -93,7 +91,7 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
     on<BurlangSearchRussianWord>((event, emit) async {
       try {
         final russianwords =
-            await BurlangApi().getRussianWord(event.textEditingController);
+            await BurlangApi().getRussianWord(event.query.trim());
 
         final List<Translations> translationList = [];
 
@@ -103,10 +101,10 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           translationList.add(russianTranslations);
         }
 
-        emit(
-            BurlangDataSearchedRussianWordState(russianwords, translationList));
+        emit(BurlangDataSearchedRussianWordState(
+            event.query, russianwords, translationList));
 
-        if (russianwords.isEmpty && event.textEditingController != '') {
+        if (russianwords.isEmpty && event.query != '') {
           emit(BurlangErrorFindingWordState(
               isError: true, text: 'Подходящее слово не найдено'));
         }

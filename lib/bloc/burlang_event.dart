@@ -5,6 +5,12 @@ abstract class BurlangEvent {}
 
 class BurlangInitializeNews extends BurlangEvent {}
 
+class BurlangInitializeNames extends BurlangEvent {
+  final String letter;
+  final String query;
+  BurlangInitializeNames({this.letter, this.query});
+}
+
 class BurlangSearchName extends BurlangEvent {
   final String letter;
   final String query;
@@ -12,11 +18,11 @@ class BurlangSearchName extends BurlangEvent {
 }
 
 class BurlangSearchBuryatWord extends BurlangEvent {
-  final String textEditingController;
-  BurlangSearchBuryatWord({this.textEditingController});
+  final String query;
+  BurlangSearchBuryatWord({this.query});
 }
 
 class BurlangSearchRussianWord extends BurlangEvent {
-  final String textEditingController;
-  BurlangSearchRussianWord({this.textEditingController});
+  final String query;
+  BurlangSearchRussianWord({this.query});
 }

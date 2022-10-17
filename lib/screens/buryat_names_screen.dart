@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/config/router.dart';
+import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
@@ -36,55 +37,93 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const LoaderWidget()
-        : BlocListener<BurlangBloc, BurlangState>(
-            listener: (context, state) {
-              if (state is BurlangDataSearchedNamesState) {
+    return BlocListener<BurlangBloc, BurlangState>(
+      listener: (context, state) {
+        if (state is BurlangDataSearchedNamesState) {
+          if (!mounted) return;
+          setState(() {
+            isLoading = false;
+            isError = false;
+            query = state.query;
+            names = state.searchedNames;
+          });
+        }
+
+        if (state is BurlangInitializedNamesState) {
+          if (!mounted) return;
+          setState(() {
+            isLoading = false;
+            isError = false;
+            names = state.incomeNames;
+          });
+        }
+
+        if (state is BurlangErrorState) {
+          if (!mounted) return;
+          setState(() {
+            isLoading = false;
+            isError = state.isError;
+            errorText = state.text;
+          });
+        }
+      },
+      child: Scaffold(
+          appBar: const AppBarWidget(),
+          body: RefreshIndicator(
+            color: Constants.color,
+            onRefresh: () async {
+              await Future.delayed(const Duration(seconds: 2)).then((_) {
                 if (!mounted) return;
-
                 setState(() {
-                  query = state.query;
-                  names = state.searchedNames;
+                  isLoading = true;
                 });
-              }
-
-              if (state is BurlangErrorState) {
-                setState(() {
-                  isLoading = false;
-                  isError = state.isError;
-                  errorText = state.text;
-                });
-              }
+                BlocProvider.of<BurlangBloc>(context).add(
+                    BurlangInitializeNames(
+                        letter: widget.letter, query: query));
+              });
             },
-            child: Scaffold(
-                appBar: const AppBarWidget(),
-                body: isError
-                    ? Center(
-                        child: Padding(
-                            padding: const EdgeInsets.only(top: 20, bottom: 20),
-                            child: Card(
-                                elevation: 1.0,
-                                color: const Color.fromARGB(255, 242, 222, 222),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 20, horizontal: 40),
-                                  child: Text(
-                                    errorText,
-                                    style: const TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 169, 69, 68)),
-                                  ),
-                                ))),
+            child: Column(
+              children: [
+                SearchBuryatNameWidget(
+                  text: query,
+                  onChanged: searchName,
+                  hintText: 'Введите имя',
+                ),
+                isLoading
+                    ? const LoaderWidget(
+                        padding: EdgeInsets.only(top: 200),
                       )
-                    : Column(
-                        children: [
-                          SearchBuryatNameWidget(
-                            text: query,
-                            onChanged: searchName,
-                            hintText: 'Введите имя',
-                          ),
-                          Expanded(
+                    : isError
+                        ? Expanded(
+                            child: ListView.builder(
+                            itemBuilder: ((context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 200,
+                                  left: 20,
+                                  right: 20,
+                                ),
+                                child: Card(
+                                    elevation: 1.0,
+                                    color: const Color.fromARGB(
+                                        255, 242, 222, 222),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 40),
+                                      child: Center(
+                                        child: Text(
+                                          errorText,
+                                          style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 169, 69, 68)),
+                                        ),
+                                      ),
+                                    )),
+                              );
+                            }),
+                            itemCount: 1,
+                          ))
+                        : Expanded(
                             child: ListView.builder(
                               itemBuilder: (context, index) {
                                 final sortedIndex = index + 1;
@@ -101,42 +140,25 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                               itemCount: names.length,
                             ),
                           ),
-                        ],
-                      )),
-          );
+              ],
+            ),
+          )),
+    );
   }
 
   searchName(String query) {
+    setState(() {
+      isLoading = true;
+    });
     BlocProvider.of<BurlangBloc>(context)
         .add(BurlangSearchName(letter: widget.letter, query: query));
   }
 
-  Future<void> init() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
-
-      final incomeNames = await BurlangApi().getAllNames(widget.letter, query);
-
-      setState(() {
-        isLoading = false;
-        names = incomeNames;
-      });
-    } on SocketException catch (e) {
-      setState(() {
-        isLoading = false;
-        isError = true;
-        errorText = 'Проверьте подключение к сети Интернет';
-      });
-      debugPrint(e.message);
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        isError = true;
-        errorText = 'Произошла ошибка';
-      });
-      debugPrint(e.toString());
-    }
+  void init() {
+    setState(() {
+      isLoading = true;
+    });
+    BlocProvider.of<BurlangBloc>(context)
+        .add(BurlangInitializeNames(letter: widget.letter, query: query));
   }
 }

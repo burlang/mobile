@@ -10,6 +10,11 @@ class BurlangInitializedNewsState extends BurlangState {
   BurlangInitializedNewsState({this.incomeNews});
 }
 
+class BurlangInitializedNamesState extends BurlangState {
+  final List<BuryatNames> incomeNames;
+  BurlangInitializedNamesState({this.incomeNames});
+}
+
 class BurlangDataSearchedNamesState extends BurlangState {
   final String query;
   final List<BuryatNames> searchedNames;
@@ -17,18 +22,20 @@ class BurlangDataSearchedNamesState extends BurlangState {
 }
 
 class BurlangDataSearchedBuryatWordState extends BurlangState {
+  final String query;
   final List<SearchWords> buryatWords;
   final List<Translations> translationList;
-  BurlangDataSearchedBuryatWordState(this.buryatWords, this.translationList);
+  BurlangDataSearchedBuryatWordState(this.query, this.buryatWords, this.translationList);
 }
 
 class BurlangDataSearchedRussianWordState extends BurlangState {
+  final String query;
   final List<SearchWords> russianWords;
   final List<Translations> translationList;
-  BurlangDataSearchedRussianWordState(this.russianWords, this.translationList);
+  BurlangDataSearchedRussianWordState(this.query, this.russianWords, this.translationList);
 }
 
-class BurlangErrorFindingWordState extends BurlangState{
+class BurlangErrorFindingWordState extends BurlangState {
   final bool isError;
   final String text;
   BurlangErrorFindingWordState({this.isError, this.text});
