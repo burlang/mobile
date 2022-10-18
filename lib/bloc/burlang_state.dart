@@ -22,17 +22,17 @@ class BurlangDataSearchedNamesState extends BurlangState {
 }
 
 class BurlangDataSearchedBuryatWordState extends BurlangState {
-  final String query;
   final List<SearchWords> buryatWords;
   final List<Translations> translationList;
-  BurlangDataSearchedBuryatWordState(this.query, this.buryatWords, this.translationList);
+  BurlangDataSearchedBuryatWordState(
+      { this.buryatWords, this.translationList});
 }
 
 class BurlangDataSearchedRussianWordState extends BurlangState {
-  final String query;
   final List<SearchWords> russianWords;
   final List<Translations> translationList;
-  BurlangDataSearchedRussianWordState(this.query, this.russianWords, this.translationList);
+  BurlangDataSearchedRussianWordState(
+      {this.russianWords, this.translationList});
 }
 
 class BurlangErrorFindingWordState extends BurlangState {

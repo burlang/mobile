@@ -71,12 +71,12 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           translationList.add(buryatTransation);
         }
 
-        emit(BurlangDataSearchedBuryatWordState(
-            event.query, buryatwords, translationList));
-
         if (buryatwords.isEmpty && event.query != '') {
           emit(BurlangErrorFindingWordState(
               isError: true, text: 'Подходящее слово не найдено'));
+        } else {
+          emit(BurlangDataSearchedBuryatWordState(
+              buryatWords: buryatwords, translationList: translationList));
         }
       } on ClientException catch (e) {
         emit(BurlangErrorState(
@@ -101,12 +101,12 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
           translationList.add(russianTranslations);
         }
 
-        emit(BurlangDataSearchedRussianWordState(
-            event.query, russianwords, translationList));
-
         if (russianwords.isEmpty && event.query != '') {
           emit(BurlangErrorFindingWordState(
               isError: true, text: 'Подходящее слово не найдено'));
+        } else {
+          emit(BurlangDataSearchedRussianWordState(
+              russianWords: russianwords, translationList: translationList));
         }
       } on ClientException catch (e) {
         emit(BurlangErrorState(

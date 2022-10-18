@@ -21,7 +21,6 @@ class _SearchDictionaryWordWidgetState
   List<SearchWords> words = [];
   List<Translations> translations = [];
   String errorText = '';
-  String query = '';
 
   final _formKey = GlobalKey<FormState>();
 
@@ -42,28 +41,6 @@ class _SearchDictionaryWordWidgetState
   Widget build(BuildContext context) {
     return BlocListener<BurlangBloc, BurlangState>(
       listener: (context, state) {
-        if (state is BurlangDataSearchedBuryatWordState) {
-          if (!mounted) return;
-          setState(() {
-            query = state.query;
-            isLoading = false;
-            isError = false;
-            words = state.buryatWords;
-            translations = state.translationList;
-          });
-        }
-
-        if (state is BurlangDataSearchedRussianWordState) {
-          if (!mounted) return;
-          setState(() {
-            query = state.query;
-            isLoading = false;
-            isError = false;
-            words = state.russianWords;
-            translations = state.translationList;
-          });
-        }
-
         // from refresh indicator in main screen
         if (state is BurlangInitializedNewsState) {
           if (!mounted) return;
@@ -90,12 +67,37 @@ class _SearchDictionaryWordWidgetState
             errorText = state.text;
           });
         }
+
+        if (state is BurlangDataSearchedBuryatWordState) {
+          if (!mounted) return;
+          if (state.buryatWords.first.value.contains(textController.text)) {
+            setState(() {
+              isLoading = false;
+              isError = false;
+              words = state.buryatWords;
+              translations = state.translationList;
+            });
+          }
+        }
+
+        if (state is BurlangDataSearchedRussianWordState) {
+          if (!mounted) return;
+          if (state.russianWords.first.value.contains(textController.text)) {
+            setState(() {
+              isLoading = false;
+              isError = false;
+              words = state.russianWords;
+              translations = state.translationList;
+            });
+          }
+        }
       },
       child: Form(
         key: _formKey,
         child: Card(
           elevation: 0.6,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 15),
@@ -222,23 +224,27 @@ class _SearchDictionaryWordWidgetState
                                 ),
                               )))
                       : textController.text != ''
-                          ? SizedBox(
-                              height: words.length == 1
-                                  ? 100
-                                  : MediaQuery.of(context).size.height / 2,
+                          ? Container(
+                              constraints: BoxConstraints(
+                                  maxHeight:
+                                      MediaQuery.of(context).size.height / 2,
+                                  minHeight: 100),
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemBuilder: ((context, index) {
-                                  return Card(
-                                    elevation: 1.0,
-                                    child: ListTile(
-                                      title: Text(
-                                        words[index].value,
+                                  return Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Card(
+                                      elevation: 1.0,
+                                      child: ListTile(
+                                        title: Text(
+                                          words[index].value,
+                                        ),
+                                        subtitle: Text(translations[index]
+                                            .translations
+                                            .first
+                                            .value),
                                       ),
-                                      subtitle: Text(translations[index]
-                                          .translations
-                                          .first
-                                          .value),
                                     ),
                                   );
                                 }),

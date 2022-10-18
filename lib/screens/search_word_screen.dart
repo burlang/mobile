@@ -41,7 +41,12 @@ class _SearchWordScreenState extends State<SearchWordScreen> {
         body: isLoading
             ? const LoaderWidget(padding: EdgeInsets.zero)
             : GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
+                onTap: () {
+                  final FocusScopeNode currentScope = FocusScope.of(context);
+                  if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                    FocusManager.instance.primaryFocus.unfocus();
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(15),
                   child: RefreshIndicator(
