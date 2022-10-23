@@ -1,3 +1,5 @@
+import 'package:burlang_demo/config/router.dart';
+import 'package:burlang_demo/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -8,9 +10,13 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 55, 119, 151),
+      backgroundColor: Constants.color,
       elevation: 0.0,
-      title: const Text('Burlang'),
+      title: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(RouteGenerator.MAIN);
+          },
+          child: const Text('Burlang')),
     );
   }
 

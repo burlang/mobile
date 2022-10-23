@@ -95,6 +95,7 @@ class _SearchDictionaryWordWidgetState
       child: Form(
         key: _formKey,
         child: Card(
+          color: Constants.backgroundColor,
           elevation: 0.6,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -140,13 +141,13 @@ class _SearchDictionaryWordWidgetState
                         decoration: InputDecoration(
                             focusedBorder: const OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  BorderRadius.all(Radius.circular(5)),
                               borderSide: BorderSide(color: Constants.color),
                             ),
-                            border: const OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Constants.color),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    BorderRadius.all(Radius.circular(5))),
                             hintText: isBur
                                 ? Constants.input_bur
                                 : Constants.input_rus),
@@ -192,7 +193,7 @@ class _SearchDictionaryWordWidgetState
                                 const SizedBox(
                                   width: 5,
                                 ),
-                                letterWidget('h'),
+                                letterWidget('һ'),
                                 const SizedBox(
                                   width: 5,
                                 ),
@@ -235,6 +236,8 @@ class _SearchDictionaryWordWidgetState
                                   return Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: Card(
+                                      color: const Color.fromRGBO(
+                                          223, 240, 216, 1),
                                       elevation: 1.0,
                                       child: ListTile(
                                         title: Text(

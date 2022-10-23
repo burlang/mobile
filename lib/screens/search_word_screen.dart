@@ -1,8 +1,9 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/constants/constants.dart';
+import 'package:burlang_demo/widgets/contacts_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
-import 'package:burlang_demo/widgets/new_widget.dart';
+import 'package:burlang_demo/widgets/news_widget.dart';
 import 'package:burlang_demo/widgets/search_dictionary_word_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -63,7 +64,8 @@ class _SearchWordScreenState extends State<SearchWordScreen> {
                     },
                     child: ListView(shrinkWrap: true, children: const [
                       SearchDictionaryWordWidget(),
-                      NewsWidget()
+                      NewsWidget(),
+                      ContactsWidget()
                     ]),
                   ),
                 ),

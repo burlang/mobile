@@ -1,6 +1,8 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
+import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/models/news.dart';
+import 'package:burlang_demo/widgets/contacts_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,34 +51,15 @@ class _NewsWidgetState extends State<NewsWidget> {
       },
       child: isLoading
           ? const LoaderWidget(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 60),
             )
           : isError
               ? Container()
-              : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Padding(
-                    padding: EdgeInsets.all(14.0),
-                    child: Text(
-                      'Новости',
-                      style: TextStyle(
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: ((context, index) {
-                        if (news == null) {
-                          return Container();
-                        } else {
-                          return NewWidget(
-                            title: news[index].title,
-                            subtitle: news[index].createdAt,
-                          );
-                        }
-                      }),
-                      itemCount: news == null ? 1 : news.length),
-                ]),
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: List<Widget>.generate(news.length + 1,
+                      (index) => itemBuilder(context, index)).toList(),
+                ),
     );
   }
 
@@ -87,22 +70,54 @@ class _NewsWidgetState extends State<NewsWidget> {
     initializeDateFormatting('ru', null);
     BlocProvider.of<BurlangBloc>(context).add(BurlangInitializeNews());
   }
+
+  itemBuilder(BuildContext context, int index) {
+    if (news == null) {
+      return Container();
+    } else if (index == 0) {
+      return const Padding(
+        padding: EdgeInsets.all(14.0),
+        child: Text(
+          'Новости',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
+      );
+    } else {
+      return Padding(
+        padding: const EdgeInsets.only(
+          top: 10,
+        ),
+        child: NewWidget(
+          title: news[index - 1].title,
+          subtitle: news[index - 1].createdAt,
+          slug: news[index - 1].slug,
+        ),
+      );
+    }
+  }
 }
 
 class NewWidget extends StatelessWidget {
   final String title;
   final String subtitle;
+  final String slug;
   const NewWidget({
     this.title,
     this.subtitle,
+    this.slug,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(RouteGenerator.NEW, arguments: slug);
+      },
       child: Card(
+        color: Constants.backgroundColor,
         elevation: 0.6,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -110,8 +125,7 @@ class NewWidget extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               title,
-              style: const TextStyle(
-                  color: Color.fromARGB(255, 55, 119, 151), fontSize: 24),
+              style: const TextStyle(color: Constants.color, fontSize: 24),
             ),
             const SizedBox(
               height: 10,

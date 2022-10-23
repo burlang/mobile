@@ -3,6 +3,7 @@ import 'package:burlang_demo/models/buryat_name.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
 import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
+import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 
 class BuryatNameScreen extends StatelessWidget {
@@ -19,9 +20,12 @@ class BuryatNameScreen extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                title: Text(
-                  snapshot.data.name,
-                  style: const TextStyle(fontSize: 24),
+                title: Padding(
+                  padding: const EdgeInsets.only(top: 5, bottom: 5),
+                  child: Text(
+                    snapshot.data.name,
+                    style: const TextStyle(fontSize: 30),
+                  ),
                 ),
                 subtitle: Card(
                   color: Colors.green[100],
@@ -35,8 +39,10 @@ class BuryatNameScreen extends StatelessWidget {
                           children: [
                             Text(
                               snapshot.data.description,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w600),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                  color: Color.fromRGBO(60, 118, 61, 1)),
                             ),
                             const SizedBox(height: 9),
                             Text(snapshot.data.note),
@@ -72,8 +78,8 @@ class BuryatNameScreen extends StatelessWidget {
             );
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const LoaderWidget(
+              padding: EdgeInsets.zero,
             );
           }
 
@@ -82,8 +88,8 @@ class BuryatNameScreen extends StatelessWidget {
               child: Text('Ошибка'),
             );
           }
-          return const Center(
-            child: CircularProgressIndicator(),
+          return const LoaderWidget(
+            padding: EdgeInsets.zero,
           );
         }),
         future: BurlangApi().getName(buryat_name),

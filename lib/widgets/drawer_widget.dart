@@ -1,4 +1,5 @@
 import 'package:burlang_demo/config/router.dart';
+import 'package:burlang_demo/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -9,7 +10,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromARGB(255, 55, 119, 151),
+      backgroundColor: Constants.color,
       child: ListView(children: [
         ListTile(
           title: const Text(
@@ -31,24 +32,12 @@ class DrawerWidget extends StatelessWidget {
         ),
         ListTile(
           title: const Text(
-            'Книги',
-            style: TextStyle(color: Colors.white),
-          ),
-          onTap: () {},
-        ),
-        ListTile(
-          title: const Text(
             'Новости',
             style: TextStyle(color: Colors.white),
           ),
-          onTap: () {},
-        ),
-        ListTile(
-          title: const Text(
-            'Войти',
-            style: TextStyle(color: Colors.white),
-          ),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(RouteGenerator.NEWS);
+          },
         ),
       ]),
     );
