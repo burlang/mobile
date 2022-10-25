@@ -18,7 +18,8 @@ class NewScreen extends StatelessWidget {
           if (snapshot.hasData) {
             final contentWithoutEquals = snapshot.data.content
                 .replaceAll(RegExp("#|<br>"), "")
-                .replaceAll('*', "");
+                .replaceAll('*', "")
+                .trim();
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -32,7 +33,7 @@ class NewScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
+                      padding: const EdgeInsets.only(bottom: 7),
                       child: Text(DateFormat.yMMMMd('ru')
                           .format(DateTime.parse(snapshot.data.createdAt))),
                     ),

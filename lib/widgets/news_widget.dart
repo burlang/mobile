@@ -76,7 +76,7 @@ class _NewsWidgetState extends State<NewsWidget> {
       return Container();
     } else if (index == 0) {
       return const Padding(
-        padding: EdgeInsets.all(14.0),
+        padding: EdgeInsets.only(left: 14, right: 14, bottom: 7, top: 21),
         child: Text(
           'Новости',
           style: TextStyle(
