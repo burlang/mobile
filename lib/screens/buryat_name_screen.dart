@@ -32,7 +32,7 @@ class BuryatNameScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height / 3,
+                      height: MediaQuery.of(context).size.height / 2.5,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,

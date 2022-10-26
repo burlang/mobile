@@ -1,6 +1,7 @@
 import 'package:burlang_demo/config/launcher.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactsWidget extends StatelessWidget {
   const ContactsWidget({Key key}) : super(key: key);
@@ -47,10 +48,7 @@ class ContactsWidget extends StatelessWidget {
               Expanded(
                 child: TextButton(
                   onPressed: () async {
-                    await Launcher.launch(Uri(
-                      path: 'dbulats88@gmail.com',
-                      scheme: 'mailto',
-                    ));
+                    await launchUrl(Uri(path: 'mailto:bubeevm@gmail.com'));
                   },
                   child: const Text(
                     'dbulats88@gmail.com',
