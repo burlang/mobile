@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
 import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/constants/constants.dart';
@@ -10,7 +7,6 @@ import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 
 class BuryatNamesScreen extends StatefulWidget {
   final String letter;

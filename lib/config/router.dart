@@ -4,7 +4,6 @@ import 'package:burlang_demo/screens/new_screen.dart';
 import 'package:burlang_demo/screens/search_word_screen.dart';
 import 'package:burlang_demo/screens/buryat_names_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/news_screen.dart';
 
 class RouteGenerator {

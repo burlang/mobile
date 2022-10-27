@@ -1,7 +1,6 @@
 import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/models/buryat_name.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
-import 'package:burlang_demo/widgets/drawer_widget.dart';
 import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';

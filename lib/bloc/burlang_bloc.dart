@@ -61,7 +61,7 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
     on<BurlangSearchBuryatWord>((event, emit) async {
       try {
         final buryatwords =
-            await BurlangApi().getBuryatWord(event.query.trim());
+            await BurlangApi().getBuryatWord(event.query);
 
         final List<Translations> translationList = [];
 
