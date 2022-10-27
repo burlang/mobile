@@ -48,7 +48,10 @@ class ContactsWidget extends StatelessWidget {
               Expanded(
                 child: TextButton(
                   onPressed: () async {
-                    await launchUrl(Uri(path: 'mailto:bubeevm@gmail.com'));
+                    await Launcher.launch(Uri(
+                      path: 'dbulats88@gmail.com',
+                      scheme: 'mailto',
+                    ));
                   },
                   child: const Text(
                     'dbulats88@gmail.com',
