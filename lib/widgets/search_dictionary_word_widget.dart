@@ -70,7 +70,8 @@ class _SearchDictionaryWordWidgetState
 
         if (state is BurlangDataSearchedBuryatWordState) {
           if (!mounted) return;
-          if (state.buryatWords.first.value.contains(textController.text.trim())) {
+          if (state.buryatWords.first.value
+              .contains(textController.text.trim())) {
             setState(() {
               isLoading = false;
               isError = false;
@@ -82,7 +83,8 @@ class _SearchDictionaryWordWidgetState
 
         if (state is BurlangDataSearchedRussianWordState) {
           if (!mounted) return;
-          if (state.russianWords.first.value.contains(textController.text.trim())) {
+          if (state.russianWords.first.value
+              .contains(textController.text.trim())) {
             setState(() {
               isLoading = false;
               isError = false;
@@ -164,6 +166,8 @@ class _SearchDictionaryWordWidgetState
                                 isLoading = false;
                               });
                             });
+                          } else if (val.endsWith(' ')) {
+                            return null;
                           } else {
                             try {
                               setState(() {
