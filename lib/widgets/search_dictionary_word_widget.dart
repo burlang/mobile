@@ -54,7 +54,7 @@ class _SearchDictionaryWordWidgetState
           if (!mounted) return;
           setState(() {
             isLoading = false;
-            isError = state.isError;
+            isError = true;
             errorText = state.text;
           });
         }
@@ -154,17 +154,10 @@ class _SearchDictionaryWordWidgetState
                                 ? Constants.input_bur
                                 : Constants.input_rus),
                         onChanged: (val) async {
-                          if (val == '') {
+                          if (val == '' || val == '' && isError) {
                             setState(() {
-                              isLoading = true;
+                              isLoading = false;
                               isError = false;
-                            });
-                            await Future.delayed(
-                                    const Duration(microseconds: 1))
-                                .then((_) {
-                              setState(() {
-                                isLoading = false;
-                              });
                             });
                           } else if (val.endsWith(' ')) {
                             return null;
