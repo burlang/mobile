@@ -156,8 +156,14 @@ class _SearchDictionaryWordWidgetState
                         onChanged: (val) async {
                           if (val == '' || val == '' && isError) {
                             setState(() {
-                              isLoading = false;
-                              isError = false;
+                              isLoading = true;
+                            });
+                            await Future.delayed(Duration(milliseconds: 500))
+                                .then((_) {
+                              setState(() {
+                                isLoading = false;
+                                isError = false;
+                              });
                             });
                           } else if (val.endsWith(' ')) {
                             return null;
