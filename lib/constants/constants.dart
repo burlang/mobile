@@ -76,5 +76,6 @@ class Constants {
     fontSize: 15,
   );
 
-  static const textDrawerStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
+  static const textDrawerStyle =
+      TextStyle(color: Colors.white, fontFamily: 'Arial');
 }

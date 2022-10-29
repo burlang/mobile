@@ -118,10 +118,8 @@ class _SearchDictionaryWordWidgetState
                           isBur = !isBur;
                         });
                       },
-                      icon: const Icon(
-                        Icons.swap_horizontal_circle_sharp,
-                        color: Color.fromARGB(255, 55, 119, 151),
-                      )),
+                      icon: const Icon(Icons.swap_horizontal_circle_sharp,
+                          color: Constants.color)),
                   Text(
                     '${isBur ? Constants.bur_rus : Constants.rus_bur} словарь',
                     style: const TextStyle(

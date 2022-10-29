@@ -2,7 +2,6 @@ import 'package:burlang_demo/config/launcher.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactsWidget extends StatelessWidget {
   const ContactsWidget({Key key}) : super(key: key);
@@ -14,7 +13,7 @@ class ContactsWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           const Divider(
             thickness: 1.2,
@@ -89,7 +88,7 @@ class ContactsWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           TextContainerWidget(
             gender: 'Ⓒ Burlang 2013-2022',
