@@ -41,6 +41,7 @@ class _SearchBuryatNameWidgetState extends State<SearchBuryatNameWidget> {
                         },
                       )
                     : null,
+                hintStyle: TextStyle(fontFamily: 'Arial'),
                 hintText: widget.hintText,
                 icon: const Padding(
                   padding: EdgeInsets.only(left: 10),

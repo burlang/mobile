@@ -13,28 +13,20 @@ class DrawerWidget extends StatelessWidget {
       backgroundColor: Constants.color,
       child: ListView(children: [
         ListTile(
-          title: const Text(
-            'Словарь',
-            style: TextStyle(color: Colors.white),
-          ),
+          title: const Text('Словарь', style: Constants.textDrawerStyle),
           onTap: () {
             Navigator.of(context).pushNamed(RouteGenerator.MAIN);
           },
         ),
         ListTile(
-          title: const Text(
-            'Бурятские имена',
-            style: TextStyle(color: Colors.white),
-          ),
+          title:
+              const Text('Бурятские имена', style: Constants.textDrawerStyle),
           onTap: () {
             Navigator.of(context).pushNamed(RouteGenerator.BURYAT_NAMES);
           },
         ),
         ListTile(
-          title: const Text(
-            'Новости',
-            style: TextStyle(color: Colors.white),
-          ),
+          title: const Text('Новости', style: Constants.textDrawerStyle),
           onTap: () {
             Navigator.of(context).pushNamed(RouteGenerator.NEWS);
           },

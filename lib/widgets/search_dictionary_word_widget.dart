@@ -125,7 +125,9 @@ class _SearchDictionaryWordWidgetState
                   Text(
                     '${isBur ? Constants.bur_rus : Constants.rus_bur} словарь',
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.w400),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Arial'),
                   ),
                 ]),
               ),
@@ -150,6 +152,9 @@ class _SearchDictionaryWordWidgetState
                                 borderSide: BorderSide(color: Constants.color),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(5))),
+                            hintStyle: TextStyle(
+                              fontFamily: 'Arial',
+                            ),
                             hintText: isBur
                                 ? Constants.input_bur
                                 : Constants.input_rus),
@@ -226,6 +231,7 @@ class _SearchDictionaryWordWidgetState
                                 child: Text(
                                   errorText,
                                   style: const TextStyle(
+                                      fontFamily: 'Arial',
                                       color: Color.fromARGB(255, 169, 69, 68)),
                                 ),
                               )))
@@ -247,11 +253,15 @@ class _SearchDictionaryWordWidgetState
                                       child: ListTile(
                                         title: Text(
                                           words[index].value,
+                                          style: TextStyle(fontFamily: 'Arial'),
                                         ),
-                                        subtitle: Text(translations[index]
-                                            .translations
-                                            .first
-                                            .value),
+                                        subtitle: Text(
+                                          translations[index]
+                                              .translations
+                                              .first
+                                              .value,
+                                          style: TextStyle(fontFamily: 'Arial'),
+                                        ),
                                       ),
                                     ),
                                   );
@@ -285,10 +295,14 @@ class _SearchDictionaryWordWidgetState
           }
         },
         child: Container(
-          height: 55,
+          height: 60,
           width: 90,
           decoration: BoxDecoration(border: Border.all(color: Constants.color)),
-          child: Center(child: Text(letter)),
+          child: Center(
+              child: Text(
+            letter,
+            style: TextStyle(fontSize: 17),
+          )),
         ),
       ),
     );

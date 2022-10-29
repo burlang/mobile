@@ -75,12 +75,10 @@ class _NewsWidgetState extends State<NewsWidget> {
       return Container();
     } else if (index == 0) {
       return const Padding(
-        padding: EdgeInsets.only(left: 14, right: 14, bottom: 7, top: 21),
+        padding: EdgeInsets.only(left: 14, right: 14, bottom: 7, top: 14),
         child: Text(
           'Новости',
-          style: TextStyle(
-            fontSize: 25,
-          ),
+          style: TextStyle(fontSize: 25, fontFamily: 'Arial'),
         ),
       );
     } else {
@@ -124,14 +122,15 @@ class NewWidget extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               title,
-              style: const TextStyle(color: Constants.color, fontSize: 24),
+              style: const TextStyle(
+                  color: Constants.color, fontSize: 24, fontFamily: 'Arial'),
             ),
             const SizedBox(
               height: 10,
             ),
             Text(
               DateFormat.yMMMMd('ru').format(DateTime.parse(subtitle)),
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey, fontFamily: 'Arial'),
             )
           ]),
         ),

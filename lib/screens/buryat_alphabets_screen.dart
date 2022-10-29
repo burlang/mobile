@@ -44,6 +44,7 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
                           style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
+                              fontFamily: 'Arial',
                               fontWeight: FontWeight.w400),
                         ),
                         const SizedBox(

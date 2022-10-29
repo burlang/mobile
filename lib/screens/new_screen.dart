@@ -19,9 +19,11 @@ class NewScreen extends StatelessWidget {
             final contentWithoutEquals = snapshot.data.content
                 .replaceAll(RegExp("#|<br>"), "")
                 .replaceAll('*', "")
+                .replaceAll(
+                    '[Бурятские имена](http://burlang.ru/buryat-names)', '')
                 .trim();
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -29,17 +31,28 @@ class NewScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10, bottom: 10),
                       child: Text(
                         snapshot.data.name,
-                        style: const TextStyle(fontSize: 24),
+                        style: const TextStyle(
+                            fontFamily: 'Arial',
+                            fontSize: 27,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 7),
-                      child: Text(DateFormat.yMMMMd('ru')
-                          .format(DateTime.parse(snapshot.data.createdAt))),
+                      padding: const EdgeInsets.only(bottom: 5, top: 5),
+                      child: Text(
+                        DateFormat.yMMMMd('ru')
+                            .format(DateTime.parse(snapshot.data.createdAt)),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(contentWithoutEquals),
+                      child: Text(
+                        contentWithoutEquals,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Arial',
+                        ),
+                      ),
                     ),
                   ]),
             );

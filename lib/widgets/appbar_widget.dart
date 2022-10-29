@@ -13,10 +13,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Constants.color,
       elevation: 0.0,
       title: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(RouteGenerator.MAIN);
-          },
-          child: const Text('Burlang')),
+        onTap: () {
+          Navigator.of(context).pushNamed(RouteGenerator.MAIN);
+        },
+        child: const Text('Burlang',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+      ),
     );
   }
 

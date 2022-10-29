@@ -23,7 +23,10 @@ class BuryatNameScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 5, bottom: 5),
                   child: Text(
                     snapshot.data.name,
-                    style: const TextStyle(fontSize: 30),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Arial',
+                    ),
                   ),
                 ),
                 subtitle: Card(
@@ -41,31 +44,37 @@ class BuryatNameScreen extends StatelessWidget {
                               style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 17,
+                                  fontFamily: 'Arial',
                                   color: Color.fromRGBO(60, 118, 61, 1)),
                             ),
                             const SizedBox(height: 9),
-                            Text(snapshot.data.note),
+                            Text(
+                              snapshot.data.note,
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                              ),
+                            ),
                             const SizedBox(height: 9),
                             snapshot.data.male == 1 && snapshot.data.female == 1
                                 ? Row(
                                     children: const [
-                                      GenderNameContainerWidget(
+                                      TextContainerWidget(
                                         gender: 'Мужское имя',
                                       ),
                                       SizedBox(
                                         width: 5,
                                       ),
-                                      GenderNameContainerWidget(
+                                      TextContainerWidget(
                                         gender: 'Женское имя',
                                       ),
                                     ],
                                   )
                                 : snapshot.data.male == 1
-                                    ? const GenderNameContainerWidget(
+                                    ? const TextContainerWidget(
                                         gender: 'Мужское имя',
                                       )
                                     : snapshot.data.female == 1
-                                        ? const GenderNameContainerWidget(
+                                        ? const TextContainerWidget(
                                             gender: 'Женское имя',
                                           )
                                         : null,

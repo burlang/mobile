@@ -110,6 +110,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                                         child: Text(
                                           errorText,
                                           style: const TextStyle(
+                                              fontFamily: 'Arial',
                                               color: Color.fromARGB(
                                                   255, 169, 69, 68)),
                                         ),
@@ -124,7 +125,10 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                               itemBuilder: (context, index) {
                                 final sortedIndex = index + 1;
                                 return ListTile(
-                                  title: Text(names[index].name),
+                                  title: Text(
+                                    names[index].name,
+                                    style: TextStyle(fontFamily: 'Arial'),
+                                  ),
                                   trailing: Text(sortedIndex.toString()),
                                   onTap: () {
                                     Navigator.of(context).pushNamed(
