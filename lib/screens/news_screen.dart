@@ -1,5 +1,6 @@
 import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
+import 'package:burlang_demo/widgets/navigator_widget.dart';
 import 'package:burlang_demo/widgets/news_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -8,12 +9,19 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: AppBarWidget(),
       drawer: DrawerWidget(),
       body: Padding(
-        padding: EdgeInsets.all(12.0),
-        child: NewsWidget(),
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
+            NavigatorWidget(
+              subtitle: 'Новости',
+            ),
+            NewsWidget(),
+          ],
+        ),
       ),
     );
   }

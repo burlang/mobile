@@ -4,6 +4,7 @@ import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
+import 'package:burlang_demo/widgets/navigator_widget.dart';
 import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,6 +65,7 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
         }
       },
       child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: const AppBarWidget(),
           body: RefreshIndicator(
             color: Constants.color,
@@ -78,69 +80,78 @@ class _BuryatNamesScreenState extends State<BuryatNamesScreen> {
                         letter: widget.letter, query: query));
               });
             },
-            child: Column(
-              children: [
-                SearchBuryatNameWidget(
-                  text: query,
-                  onChanged: searchName,
-                  hintText: 'Введите имя',
-                ),
-                isLoading
-                    ? const LoaderWidget(
-                        padding: EdgeInsets.only(top: 200),
-                      )
-                    : isError
-                        ? Expanded(
-                            child: ListView.builder(
-                            itemBuilder: ((context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 200,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                child: Card(
-                                    elevation: 1.0,
-                                    color: const Color.fromARGB(
-                                        255, 242, 222, 222),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 40),
-                                      child: Center(
-                                        child: Text(
-                                          errorText,
-                                          style: const TextStyle(
-                                              fontFamily: 'Arial',
-                                              color: Color.fromARGB(
-                                                  255, 169, 69, 68)),
-                                        ),
-                                      ),
-                                    )),
-                              );
-                            }),
-                            itemCount: 1,
-                          ))
-                        : Expanded(
-                            child: ListView.builder(
-                              itemBuilder: (context, index) {
-                                final sortedIndex = index + 1;
-                                return ListTile(
-                                  title: Text(
-                                    names[index].name,
-                                    style: TextStyle(fontFamily: 'Arial'),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  NavigatorWidget(
+                    subtitle: 'Бурятские имена',
+                    routeName: RouteGenerator.LETTERS_NAMES,
+                    childTitle: 'Имена на букву ${widget.letter}',
+                  ),
+                  SearchBuryatNameWidget(
+                    text: query,
+                    onChanged: searchName,
+                    hintText: 'Введите имя',
+                  ),
+                  isLoading
+                      ? const LoaderWidget(
+                          padding: EdgeInsets.only(top: 200),
+                        )
+                      : isError
+                          ? Expanded(
+                              child: ListView.builder(
+                              itemBuilder: ((context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 200,
+                                    left: 20,
+                                    right: 20,
                                   ),
-                                  trailing: Text(sortedIndex.toString()),
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                        RouteGenerator.BURYAT_NAME_DISCRIPTION,
-                                        arguments: names[index].name);
-                                  },
+                                  child: Card(
+                                      elevation: 1.0,
+                                      color: const Color.fromARGB(
+                                          255, 242, 222, 222),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20, horizontal: 40),
+                                        child: Center(
+                                          child: Text(
+                                            errorText,
+                                            style: const TextStyle(
+                                                fontFamily: 'Arial',
+                                                color: Color.fromARGB(
+                                                    255, 169, 69, 68)),
+                                          ),
+                                        ),
+                                      )),
                                 );
-                              },
-                              itemCount: names.length,
+                              }),
+                              itemCount: 1,
+                            ))
+                          : Expanded(
+                              child: ListView.builder(
+                                itemBuilder: (context, index) {
+                                  final sortedIndex = index + 1;
+                                  return ListTile(
+                                    title: Text(
+                                      names[index].name,
+                                      style: TextStyle(fontFamily: 'Arial'),
+                                    ),
+                                    trailing: Text(sortedIndex.toString()),
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                          RouteGenerator
+                                              .BURYAT_NAME_DISCRIPTION,
+                                          arguments: names[index].name);
+                                    },
+                                  );
+                                },
+                                itemCount: names.length,
+                              ),
                             ),
-                          ),
-              ],
+                ],
+              ),
             ),
           )),
     );

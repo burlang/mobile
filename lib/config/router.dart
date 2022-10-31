@@ -8,7 +8,7 @@ import '../screens/news_screen.dart';
 
 class RouteGenerator {
   static const MAIN = '/';
-  static const BURYAT_NAMES = 'buryat_names';
+  static const LETTERS_NAMES = 'buryat_names';
   static const BURYAT_NAME = 'buryat_name';
   static const BURYAT_NAME_DISCRIPTION = 'buryat_name_discription';
   static const NEWS = 'news';
@@ -20,7 +20,7 @@ class RouteGenerator {
       case MAIN:
         return MaterialPageRoute(builder: (_) => const SearchWordScreen());
 
-      case BURYAT_NAMES:
+      case LETTERS_NAMES:
         return MaterialPageRoute(builder: (_) => const BuryatAlphabetsScreen());
 
       case BURYAT_NAME:
@@ -39,7 +39,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NewsScreen());
 
       case NEW:
-        return MaterialPageRoute(builder: (_) => NewScreen(slug: arg,));
+        return MaterialPageRoute(
+            builder: (_) => NewScreen(
+                  slug: arg,
+                ));
     }
     return MaterialPageRoute(builder: (_) => const SearchWordScreen());
   }

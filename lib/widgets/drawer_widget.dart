@@ -22,7 +22,7 @@ class DrawerWidget extends StatelessWidget {
           title:
               const Text('Бурятские имена', style: Constants.textDrawerStyle),
           onTap: () {
-            Navigator.of(context).pushNamed(RouteGenerator.BURYAT_NAMES);
+            Navigator.of(context).pushNamed(RouteGenerator.LETTERS_NAMES);
           },
         ),
         ListTile(

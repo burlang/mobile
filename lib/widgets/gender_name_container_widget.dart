@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextContainerWidget extends StatelessWidget {
-  final String gender;
-  const TextContainerWidget({Key key, this.gender}) : super(key: key);
+  final String text;
+  const TextContainerWidget({Key key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class TextContainerWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.black54, borderRadius: BorderRadius.circular(5)),
       child: Text(
-        gender,
+        text,
         style: TextStyle(color: Colors.white),
       ),
     );

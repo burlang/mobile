@@ -72,9 +72,7 @@ class Constants {
   static const backgroundColor = Color.fromRGBO(238, 238, 238, 1);
 
   static const textContactStyle = TextStyle(
-    color: Constants.color,
-    fontSize: 15,
-  );
+      color: Constants.color, fontSize: 15, fontWeight: FontWeight.normal);
 
   static const textDrawerStyle =
       TextStyle(color: Colors.white, fontFamily: 'Arial');

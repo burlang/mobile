@@ -8,91 +8,90 @@ class ContactsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          const Divider(
-            thickness: 1.2,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              TextButton(
-                onPressed: () async {
-                  await Launcher.launch(
-                      Uri.parse('https://github.com/damasco/burlang.ru'));
-                },
-                child: const Text(
-                  'GitHub',
-                  style: Constants.textContactStyle,
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 65,
+      ),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        const Divider(
+          thickness: 1.2,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () async {
+                await Launcher.launch(
+                    Uri.parse('https://github.com/damasco/burlang.ru'));
+              },
+              child: const Text(
+                'GitHub',
+                style: Constants.textContactStyle,
               ),
-              TextButton(
-                onPressed: () async {
-                  await Launcher.launch(Uri.parse('http://burlang.ru/api/v1'));
-                },
-                child: const Text(
-                  'Api',
-                  style: Constants.textContactStyle,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () async {
-                    await Launcher.launch(Uri(
-                      path: 'dbulats88@gmail.com',
-                      scheme: 'mailto',
-                    ));
-                  },
-                  child: const Text(
-                    'dbulats88@gmail.com',
-                    style: Constants.textContactStyle,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () async {
-                    await Launcher.launch(Uri(
-                      path: 'bairdarmaev@gmail.com',
-                      scheme: 'mailto',
-                    ));
-                  },
-                  child: const Text(
-                    'bairdarmaev@gmail.com',
-                    style: Constants.textContactStyle,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          TextButton(
-            onPressed: () async {
-              await Launcher.launch(Uri(
-                path: 'bubeevm@gmail.com',
-                scheme: 'mailto',
-              ));
-            },
-            child: const Text(
-              'bubeevm@gmail.com',
-              style: Constants.textContactStyle,
             ),
+            TextButton(
+              onPressed: () async {
+                await Launcher.launch(Uri.parse('http://burlang.ru/api/v1'));
+              },
+              child: const Text(
+                'Api',
+                style: Constants.textContactStyle,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () async {
+                  await Launcher.launch(Uri(
+                    path: 'dbulats88@gmail.com',
+                    scheme: 'mailto',
+                  ));
+                },
+                child: const Text(
+                  'dbulats88@gmail.com',
+                  style: Constants.textContactStyle,
+                ),
+              ),
+            ),
+            Expanded(
+              child: TextButton(
+                onPressed: () async {
+                  await Launcher.launch(Uri(
+                    path: 'bairdarmaev@gmail.com',
+                    scheme: 'mailto',
+                  ));
+                },
+                child: const Text(
+                  'bairdarmaev@gmail.com',
+                  style: Constants.textContactStyle,
+                ),
+              ),
+            ),
+          ],
+        ),
+        TextButton(
+          onPressed: () async {
+            await Launcher.launch(Uri(
+              path: 'bubeevm@gmail.com',
+              scheme: 'mailto',
+            ));
+          },
+          child: const Text(
+            'bubeevm@gmail.com',
+            style: Constants.textContactStyle,
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          TextContainerWidget(
-            gender: 'Ⓒ Burlang 2013-2022',
-          )
-        ]);
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        TextContainerWidget(
+          text: 'Ⓒ Burlang 2013-2022',
+        )
+      ]),
+    );
   }
 }

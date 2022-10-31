@@ -83,9 +83,7 @@ class _NewsWidgetState extends State<NewsWidget> {
       );
     } else {
       return Padding(
-        padding: const EdgeInsets.only(
-          top: 10,
-        ),
+        padding: const EdgeInsets.only(top: 5, bottom: 10),
         child: NewWidget(
           title: news[index - 1].title,
           subtitle: news[index - 1].createdAt,
@@ -113,26 +111,35 @@ class NewWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(RouteGenerator.NEW, arguments: slug);
       },
-      child: Card(
-        color: Constants.backgroundColor,
-        elevation: 0.6,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              title,
-              style: const TextStyle(
-                  color: Constants.color, fontSize: 24, fontFamily: 'Arial'),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              DateFormat.yMMMMd('ru').format(DateTime.parse(subtitle)),
-              style: const TextStyle(color: Colors.grey, fontFamily: 'Arial'),
-            )
-          ]),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height / 5,
+        child: Card(
+          color: Constants.backgroundColor,
+          elevation: 0.6,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Constants.color,
+                        fontSize: 20,
+                        fontFamily: 'Arial'),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    DateFormat.yMMMMd('ru').format(DateTime.parse(subtitle)),
+                  )
+                ]),
+          ),
         ),
       ),
     );

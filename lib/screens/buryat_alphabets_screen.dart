@@ -2,6 +2,7 @@ import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
+import 'package:burlang_demo/widgets/navigator_widget.dart';
 import 'package:flutter/material.dart';
 
 class BuryatAlphabetsScreen extends StatefulWidget {
@@ -17,11 +18,27 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
     return Scaffold(
       appBar: const AppBarWidget(),
       drawer: const DrawerWidget(),
-      body: Column(children: [
-        Expanded(
-          child: Padding(
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          NavigatorWidget(
+            subtitle: 'Бурятские имена',
+          ),
+          Padding(
             padding:
-                const EdgeInsets.only(top: 15, bottom: 15, left: 7, right: 7),
+                const EdgeInsets.only(top: 10, bottom: 20, left: 6, right: 6),
+            child: Text(
+              'Бурятские имена',
+              style: TextStyle(fontSize: 32, fontFamily: 'Arial'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Divider(
+              thickness: 1.2,
+            ),
+          ),
+          Expanded(
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 120,
@@ -70,8 +87,8 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
                   );
                 }),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }
