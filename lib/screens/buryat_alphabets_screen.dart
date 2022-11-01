@@ -25,10 +25,8 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
             subtitle: 'Бурятские имена',
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 10,
-              bottom: 20,
-            ),
+            padding:
+                const EdgeInsets.only(top: 10, bottom: 20, left: 3, right: 3),
             child: Text(
               'Бурятские имена',
               style: TextStyle(
@@ -38,7 +36,7 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: 20, left: 5, right: 5),
             child: Divider(
               thickness: 1.2,
             ),
@@ -52,42 +50,45 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
                     mainAxisSpacing: 20),
                 itemCount: Constants.letters_names.length,
                 itemBuilder: (BuildContext ctx, index) {
-                  return OutlinedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(
-                          RouteGenerator.BURYAT_NAME,
-                          arguments: Constants.letters_names[index]);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          Constants.letters_names[index],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Arial',
-                              fontWeight: FontWeight.w400),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: const Color.fromRGBO(204, 204, 204, 1),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Text(
-                              Constants.letters_numbers[index],
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
-                            ),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 3, right: 3),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                            RouteGenerator.BURYAT_NAME,
+                            arguments: Constants.letters_names[index]);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            Constants.letters_names[index],
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Arial',
+                                fontWeight: FontWeight.w400),
                           ),
-                        )
-                      ],
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(204, 204, 204, 1),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Text(
+                                Constants.letters_numbers[index],
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 }),
