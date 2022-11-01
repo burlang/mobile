@@ -76,4 +76,7 @@ class Constants {
 
   static const textDrawerStyle =
       TextStyle(color: Colors.white, fontFamily: 'Arial');
+
+  static const textSearchFormWordStyle = const TextStyle(
+      fontSize: 25, fontFamily: 'Arial', fontWeight: FontWeight.w600);
 }

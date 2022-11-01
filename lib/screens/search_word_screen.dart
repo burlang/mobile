@@ -1,4 +1,5 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
+import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/widgets/contacts_widget.dart';
 import 'package:burlang_demo/widgets/drawer_widget.dart';
@@ -20,55 +21,35 @@ class _SearchWordScreenState extends State<SearchWordScreen> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<BurlangBloc, BurlangState>(
-      listener: (context, state) {
-        if (state is BurlangInitializedNewsState) {
-          if (!mounted) return;
-          setState(() {
-            isLoading = false;
-          });
-        }
-        if (state is BurlangErrorState) {
-          if (!mounted) return;
-          setState(() {
-            isLoading = false;
-          });
-        }
-      },
-      child: Scaffold(
-        drawer: const DrawerWidget(),
-        appBar: const AppBarWidget(),
-        body: isLoading
-            ? const LoaderWidget(padding: EdgeInsets.zero)
-            : GestureDetector(
-                onTap: () {
-                  final FocusScopeNode currentScope = FocusScope.of(context);
-                  if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-                    FocusManager.instance.primaryFocus.unfocus();
-                  }
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: RefreshIndicator(
-                    color: Constants.color,
-                    onRefresh: () async {
-                      await Future.delayed(const Duration(seconds: 2))
-                          .then((_) {
-                        setState(() {
-                          isLoading = true;
-                        });
-                        BlocProvider.of<BurlangBloc>(context)
-                            .add(BurlangInitializeNews());
-                      });
-                    },
-                    child: ListView(shrinkWrap: true, children: const [
-                      SearchDictionaryWordWidget(),
-                      NewsWidget(),
-                      ContactsWidget()
-                    ]),
-                  ),
-                ),
+    return Scaffold(
+      drawer: const DrawerWidget(),
+      appBar: const AppBarWidget(),
+      body: GestureDetector(
+        onTap: () {
+          final FocusScopeNode currentScope = FocusScope.of(context);
+          if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: RefreshIndicator(
+            color: Constants.color,
+            onRefresh: () async {
+              await Future.delayed(const Duration(seconds: 2)).then((_) {
+                Navigator.of(context).pushNamed(RouteGenerator.MAIN);
+              });
+            },
+            child: ListView(shrinkWrap: true, children: const [
+              SearchDictionaryWordWidget(),
+              const SizedBox(
+                height: 12,
               ),
+              NewsWidget(),
+              ContactsWidget()
+            ]),
+          ),
+        ),
       ),
     );
   }

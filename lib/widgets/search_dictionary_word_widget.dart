@@ -5,6 +5,7 @@ import 'package:burlang_demo/models/language_translation.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchDictionaryWordWidget extends StatefulWidget {
   const SearchDictionaryWordWidget({
@@ -97,54 +98,78 @@ class _SearchDictionaryWordWidgetState
       child: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4),
           child: Card(
             color: Constants.backgroundColor,
             elevation: 0.6,
             child: Padding(
-              padding: const EdgeInsets.only(top: 12, bottom: 12),
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    padding: const EdgeInsets.only(
+                      left: 25,
+                      right: 25,
+                    ),
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            isBur ? Constants.bur : Constants.rus,
-                            style: const TextStyle(
-                                fontSize: 20, fontFamily: 'Arial'),
-                          ),
+                          Text(isBur ? Constants.bur : Constants.rus,
+                              style: Constants.textSearchFormWordStyle),
                           IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  textController.text = '';
-                                  isBur = !isBur;
-                                });
-                              },
-                              icon: const Icon(
-                                  Icons.swap_horizontal_circle_sharp,
-                                  color: Constants.color)),
-                          Text(
-                            '${isBur ? Constants.bur_rus : Constants.rus_bur} словарь',
-                            style: const TextStyle(
-                                fontSize: 20, fontFamily: 'Arial'),
+                            onPressed: () {
+                              setState(() {
+                                textController.text = '';
+                                isBur = !isBur;
+                              });
+                            },
+                            icon: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 2.5, bottom: 2.5, right: 1, left: 1),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Constants.color),
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.5),
+                                  child: SvgPicture.network(
+                                    'https://raw.githubusercontent.com/damasco/burlang.ru/9176dc8b305a7a94ef96d8c1dfb46ee08d64d32d/public/icon/arrow-left-right.svg',
+                                    fit: BoxFit.cover,
+                                    width: 25,
+                                    height: 25,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
+                          Text(
+                              '${isBur ? Constants.bur_rus : Constants.rus_bur}',
+                              style: Constants.textSearchFormWordStyle),
                         ]),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 12, right: 12, top: 5, bottom: 7),
+                      bottom: 10,
+                      left: 25,
+                    ),
+                    child: Text('Словарь',
+                        style: Constants.textSearchFormWordStyle),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 25, right: 25, top: 5, bottom: 7),
                     child: Divider(
                       thickness: 1.2,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding:
+                        const EdgeInsets.only(left: 25, right: 25, bottom: 15),
                     child: Row(
                       children: [
                         Flexible(
-                          flex: 8,
+                          flex: 7,
                           child: TextFormField(
                             focusNode: textFocusNode,
                             autocorrect: true,
@@ -317,7 +342,7 @@ class _SearchDictionaryWordWidgetState
         },
         child: Container(
           height: 60,
-          width: 90,
+          width: 110,
           decoration: BoxDecoration(border: Border.all(color: Constants.color)),
           child: Center(
               child: Text(

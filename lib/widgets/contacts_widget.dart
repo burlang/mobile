@@ -10,7 +10,7 @@ class ContactsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 65,
+        top: 45,
       ),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         const Divider(
