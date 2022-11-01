@@ -109,8 +109,8 @@ class _SearchDictionaryWordWidgetState
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: 25,
-                      right: 25,
+                      left: 15,
+                      right: 15,
                     ),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -149,27 +149,25 @@ class _SearchDictionaryWordWidgetState
                         ]),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 10,
-                      left: 25,
-                    ),
+                    padding:
+                        const EdgeInsets.only(bottom: 10, left: 15, right: 15),
                     child: Text('Словарь',
                         style: Constants.textSearchFormWordStyle),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 25, right: 25, top: 5, bottom: 7),
+                        left: 15, right: 15, top: 5, bottom: 7),
                     child: Divider(
                       thickness: 1.2,
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 25, right: 25, bottom: 15),
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     child: Row(
                       children: [
                         Flexible(
-                          flex: 7,
+                          flex: 8,
                           child: TextFormField(
                             focusNode: textFocusNode,
                             autocorrect: true,
@@ -232,7 +230,7 @@ class _SearchDictionaryWordWidgetState
                         ),
                         isBur
                             ? Expanded(
-                                flex: 3,
+                                flex: 4,
                                 child: Row(
                                   children: [
                                     letterWidget('ү'),
