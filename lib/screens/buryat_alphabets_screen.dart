@@ -25,11 +25,16 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
             subtitle: 'Бурятские имена',
           ),
           Padding(
-            padding:
-                const EdgeInsets.only(top: 10, bottom: 20, left: 6, right: 6),
+            padding: const EdgeInsets.only(
+              top: 10,
+              bottom: 20,
+            ),
             child: Text(
               'Бурятские имена',
-              style: TextStyle(fontSize: 32, fontFamily: 'Arial'),
+              style: TextStyle(
+                fontSize: 34,
+                fontFamily: 'Arial',
+              ),
             ),
           ),
           Padding(
