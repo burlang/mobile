@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import '../screens/news_screen.dart';
 
 class RouteGenerator {
-  static const MAIN = '/';
+  static const SPLASH = '/';
+  static const MAIN = 'main';
   static const LETTERS_NAMES = 'buryat_names';
   static const BURYAT_NAME = 'buryat_name';
   static const BURYAT_NAME_DISCRIPTION = 'buryat_name_discription';

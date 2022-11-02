@@ -1,5 +1,5 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
-import 'package:burlang_demo/screens/search_word_screen.dart';
+import 'package:burlang_demo/screens/splash_start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           onGenerateRoute: RouteGenerator.generateRoute,
-          home: SearchWordScreen()),
+          home: SplashStartScreen()),
     );
   }
 }

@@ -78,7 +78,7 @@ class _NewsWidgetState extends State<NewsWidget> {
         padding: EdgeInsets.only(left: 14, right: 14, bottom: 7, top: 14),
         child: Text(
           'Новости',
-          style: TextStyle(fontSize: 25, fontFamily: 'Arial'),
+          style: TextStyle(fontSize: 30, fontFamily: 'Arial'),
         ),
       );
     } else {
@@ -111,15 +111,14 @@ class NewWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(RouteGenerator.NEW, arguments: slug);
       },
-      child: SizedBox(
-        width: MediaQuery.of(context).size.height,
-        height: MediaQuery.of(context).size.height / 5,
-        child: Card(
-          color: Constants.backgroundColor,
-          elevation: 0.6,
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20),
+      child: Card(
+        color: Constants.backgroundColor,
+        elevation: 0.6,
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +128,7 @@ class NewWidget extends StatelessWidget {
                     style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Constants.color,
-                        fontSize: 20,
+                        fontSize: 22,
                         fontFamily: 'Arial'),
                   ),
                   const SizedBox(

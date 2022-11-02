@@ -133,8 +133,8 @@ class _SearchDictionaryWordWidgetState
                                     borderRadius: BorderRadius.circular(3)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(4.5),
-                                  child: SvgPicture.network(
-                                    'https://raw.githubusercontent.com/damasco/burlang.ru/9176dc8b305a7a94ef96d8c1dfb46ee08d64d32d/public/icon/arrow-left-right.svg',
+                                  child: SvgPicture.asset(
+                                    'assets/toggle.svg',
                                     fit: BoxFit.cover,
                                     width: 25,
                                     height: 25,
