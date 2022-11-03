@@ -60,15 +60,6 @@ class _SearchDictionaryWordWidgetState
           });
         }
 
-        if (state is BurlangErrorState) {
-          if (!mounted) return;
-          setState(() {
-            isLoading = false;
-            isError = state.isError;
-            errorText = state.text;
-          });
-        }
-
         if (state is BurlangDataSearchedBuryatWordState) {
           if (!mounted) return;
           if (state.buryatWords.first.value
@@ -166,86 +157,90 @@ class _SearchDictionaryWordWidgetState
                         const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     child: Row(
                       children: [
-                        Flexible(
-                          flex: 8,
-                          child: TextFormField(
-                            focusNode: textFocusNode,
-                            autocorrect: true,
-                            controller: textController,
-                            decoration: InputDecoration(
-                                focusedBorder: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)),
-                                  borderSide:
-                                      BorderSide(color: Constants.color),
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)),
-                                  borderSide:
-                                      BorderSide(color: Constants.color),
-                                ),
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Arial',
-                                ),
-                                hintText: isBur
-                                    ? Constants.input_bur
-                                    : Constants.input_rus),
-                            onChanged: (val) async {
-                              if (val == '' || val == '' && isError) {
-                                setState(() {
-                                  isLoading = true;
-                                });
-                                await Future.delayed(
-                                        Duration(milliseconds: 500))
-                                    .then((_) {
-                                  setState(() {
-                                    isLoading = false;
-                                    isError = false;
-                                  });
-                                });
-                              } else if (val.endsWith(' ')) {
-                                return null;
-                              } else {
-                                try {
+                        Expanded(
+                          child: Container(
+                            child: TextFormField(
+                              focusNode: textFocusNode,
+                              autocorrect: true,
+                              controller: textController,
+                              decoration: InputDecoration(
+                                  suffixIcon: Container(
+                                    height: 60,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(5),
+                                          bottomRight: Radius.circular(5)),
+                                      border:
+                                          Border.all(color: Constants.color),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        letterWidget(
+                                            letter: 'ү', isCenter: false),
+                                        letterWidget(
+                                            letter: 'һ', isCenter: true),
+                                        letterWidget(
+                                            letter: 'ө', isCenter: false)
+                                      ],
+                                    ),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide:
+                                        BorderSide(color: Constants.color),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide:
+                                        BorderSide(color: Constants.color),
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Arial',
+                                  ),
+                                  hintText: isBur
+                                      ? Constants.input_bur
+                                      : Constants.input_rus),
+                              onChanged: (val) async {
+                                if (val == '' || val == '' && isError) {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  isBur
-                                      ? BlocProvider.of<BurlangBloc>(context)
-                                          .add(BurlangSearchBuryatWord(
-                                              query: val.trim()))
-                                      : BlocProvider.of<BurlangBloc>(context)
-                                          .add(BurlangSearchRussianWord(
-                                              query: val.trim()));
-                                } catch (e) {
-                                  debugPrint(e);
+                                  await Future.delayed(
+                                          Duration(milliseconds: 500))
+                                      .then((_) {
+                                    setState(() {
+                                      isLoading = false;
+                                      isError = false;
+                                    });
+                                  });
+                                } else if (val.endsWith(' ')) {
+                                  return null;
+                                } else {
+                                  try {
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    isBur
+                                        ? BlocProvider.of<BurlangBloc>(context)
+                                            .add(BurlangSearchBuryatWord(
+                                                query: val.trim()))
+                                        : BlocProvider.of<BurlangBloc>(context)
+                                            .add(BurlangSearchRussianWord(
+                                                query: val.trim()));
+                                  } catch (e) {
+                                    debugPrint(e);
+                                  }
                                 }
-                              }
-                            },
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        isBur
-                            ? Expanded(
-                                flex: 4,
-                                child: Row(
-                                  children: [
-                                    letterWidget('ү'),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    letterWidget('һ'),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    letterWidget('ө')
-                                  ],
-                                ),
-                              )
-                            : Container()
                       ],
                     ),
                   ),
@@ -255,8 +250,8 @@ class _SearchDictionaryWordWidgetState
                         )
                       : isError
                           ? Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 20, bottom: 20),
+                              padding: const EdgeInsets.only(
+                                  top: 20, bottom: 20, left: 15, right: 15),
                               child: Card(
                                   elevation: 1.0,
                                   color:
@@ -320,7 +315,7 @@ class _SearchDictionaryWordWidgetState
     );
   }
 
-  Expanded letterWidget(String letter) {
+  Expanded letterWidget({String letter, bool isCenter}) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -339,9 +334,12 @@ class _SearchDictionaryWordWidgetState
           }
         },
         child: Container(
-          height: 60,
-          width: 110,
-          decoration: BoxDecoration(border: Border.all(color: Constants.color)),
+          decoration: isCenter
+              ? BoxDecoration(
+                  border: Border.symmetric(
+                      vertical: BorderSide(color: Constants.color)),
+                )
+              : BoxDecoration(),
           child: Center(
               child: Text(
             letter,

@@ -6,8 +6,6 @@ import 'package:burlang_demo/models/language_translation.dart';
 import 'package:burlang_demo/models/news.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
-
 part 'burlang_event.dart';
 part 'burlang_state.dart';
 
@@ -60,8 +58,7 @@ class BurlangBloc extends Bloc<BurlangEvent, BurlangState> {
 
     on<BurlangSearchBuryatWord>((event, emit) async {
       try {
-        final buryatwords =
-            await BurlangApi().getBuryatWord(event.query);
+        final buryatwords = await BurlangApi().getBuryatWord(event.query);
 
         final List<Translations> translationList = [];
 

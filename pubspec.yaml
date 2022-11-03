@@ -38,6 +38,7 @@ dependencies:
   intl: ^0.17.0
   http: ^0.13.5
   flutter_bloc: ^8.1.1
+  flutter_markdown: ^0.6.12
   flutter_svg: ^1.1.6
   flutter_launcher_icons: "^0.10.0"
 
@@ -86,11 +87,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Tahoma
-      fonts:
-        - asset: assets/fonts/tahoma.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
     - family: Arial
       fonts:
         - asset: assets/fonts/arial.ttf

@@ -1,15 +1,12 @@
 import 'dart:convert';
-
 import 'package:burlang_demo/models/buryat_name.dart';
 import 'package:burlang_demo/models/buryat_names.dart';
 import 'package:burlang_demo/models/buryat_search_words.dart';
 import 'package:burlang_demo/models/language_translation.dart';
 import 'package:burlang_demo/models/new.dart';
 import 'package:burlang_demo/models/news.dart';
-import 'package:burlang_demo/widgets/search_buryat_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 class BurlangApi {
   Future<BuryatName> getName(String name) async {
