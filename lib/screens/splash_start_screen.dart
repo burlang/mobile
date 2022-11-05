@@ -26,11 +26,43 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 107, 143, 1),
       body: Center(
-        child: Image.asset(
-          'assets/cover.jpg',
-          fit: BoxFit.cover,
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 14,
+          ),
+          Text('Burlang',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 98,
+                  color: Colors.white)),
+          Text(
+            'Русско-Бурятский,',
+            style: TextStyle(
+                fontFamily: 'Arial',
+                fontWeight: FontWeight.w600,
+                fontSize: 28,
+                color: Colors.white),
+          ),
+          Text(
+            'Бурятско-Русский',
+            style: TextStyle(
+                fontFamily: 'Arial',
+                fontWeight: FontWeight.w600,
+                fontSize: 28,
+                color: Colors.white),
+          ),
+          Text(
+            'электронный словарь',
+            style: TextStyle(
+                fontFamily: 'Arial',
+                fontWeight: FontWeight.w600,
+                fontSize: 28,
+                color: Colors.white),
+          )
+        ],
+      )),
     );
   }
 }

@@ -187,7 +187,8 @@ class _SearchDictionaryWordWidgetState
                                             ],
                                           ),
                                         )
-                                      : Icon(Icons.abc, color: Colors.white),
+                                      : Icon(Icons.abc,
+                                          color: Constants.backgroundColor),
                                   focusedBorder: const OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
@@ -254,22 +255,26 @@ class _SearchDictionaryWordWidgetState
                       : isError
                           ? Padding(
                               padding: const EdgeInsets.only(
-                                  top: 20, bottom: 20, left: 15, right: 15),
-                              child: Card(
-                                  elevation: 1.0,
-                                  color:
-                                      const Color.fromARGB(255, 242, 222, 222),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20, horizontal: 40),
-                                    child: Text(
-                                      errorText,
-                                      style: const TextStyle(
-                                          fontFamily: 'Arial',
-                                          color:
-                                              Color.fromARGB(255, 169, 69, 68)),
-                                    ),
-                                  )))
+                                top: 20,
+                                bottom: 20,
+                              ),
+                              child: Center(
+                                child: Card(
+                                    elevation: 1.0,
+                                    color: const Color.fromARGB(
+                                        255, 242, 222, 222),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 40),
+                                      child: Text(
+                                        errorText,
+                                        style: const TextStyle(
+                                            fontFamily: 'Arial',
+                                            color: Color.fromARGB(
+                                                255, 169, 69, 68)),
+                                      ),
+                                    )),
+                              ))
                           : textController.text != ''
                               ? Container(
                                   constraints: BoxConstraints(

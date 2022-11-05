@@ -32,55 +32,58 @@ class _SearchWordScreenState extends State<SearchWordScreen> {
           });
         }
       },
-      child: Scaffold(
-        drawer: const DrawerWidget(),
-        appBar: const AppBarWidget(),
-        body: GestureDetector(
-          onTap: () {
-            final FocusScopeNode currentScope = FocusScope.of(context);
-            if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-              FocusManager.instance.primaryFocus.unfocus();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: RefreshIndicator(
-              color: Constants.color,
-              onRefresh: () async {
-                await Future.delayed(const Duration(seconds: 2)).then((_) {
-                  Navigator.of(context).pushNamed(RouteGenerator.MAIN);
-                });
-              },
-              child: ListView(shrinkWrap: true, children: [
-                SearchDictionaryWordWidget(),
-                const SizedBox(
-                  height: 12,
-                ),
-                isError
-                    ? Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Center(
-                          child: Card(
-                              elevation: 1.0,
-                              color: const Color.fromARGB(255, 242, 222, 222),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 40),
-                                child: Center(
-                                  child: Text(
-                                    errorText,
-                                    style: const TextStyle(
-                                        fontFamily: 'Arial',
-                                        color:
-                                            Color.fromARGB(255, 169, 69, 68)),
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          drawer: const DrawerWidget(),
+          appBar: const AppBarWidget(),
+          body: GestureDetector(
+            onTap: () {
+              final FocusScopeNode currentScope = FocusScope.of(context);
+              if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                FocusManager.instance.primaryFocus.unfocus();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: RefreshIndicator(
+                color: Constants.color,
+                onRefresh: () async {
+                  await Future.delayed(const Duration(seconds: 2)).then((_) {
+                    Navigator.of(context).pushNamed(RouteGenerator.MAIN);
+                  });
+                },
+                child: ListView(shrinkWrap: true, children: [
+                  SearchDictionaryWordWidget(),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  isError
+                      ? Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Center(
+                            child: Card(
+                                elevation: 1.0,
+                                color: const Color.fromARGB(255, 242, 222, 222),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 40),
+                                  child: Center(
+                                    child: Text(
+                                      errorText,
+                                      style: const TextStyle(
+                                          fontFamily: 'Arial',
+                                          color:
+                                              Color.fromARGB(255, 169, 69, 68)),
+                                    ),
                                   ),
-                                ),
-                              )),
-                        ),
-                      )
-                    : NewsWidget(),
-                ContactsWidget()
-              ]),
+                                )),
+                          ),
+                        )
+                      : NewsWidget(),
+                  ContactsWidget()
+                ]),
+              ),
             ),
           ),
         ),
