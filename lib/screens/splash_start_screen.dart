@@ -10,6 +10,18 @@ class SplashStartScreen extends StatefulWidget {
 
 class _SplashStartScreenState extends State<SplashStartScreen> {
   @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  init() async {
+    await Future.delayed(Duration(seconds: 2)).then((_) {
+      Navigator.pushNamed(context, RouteGenerator.MAIN);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 107, 143, 1),
