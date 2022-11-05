@@ -10,18 +10,6 @@ class SplashStartScreen extends StatefulWidget {
 
 class _SplashStartScreenState extends State<SplashStartScreen> {
   @override
-  void initState() {
-    init();
-    super.initState();
-  }
-
-  init() async {
-    await Future.delayed(Duration(milliseconds: 1300)).then((_) {
-      Navigator.pushNamed(context, RouteGenerator.MAIN);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 107, 143, 1),
@@ -35,14 +23,14 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
           Text('Burlang',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 98,
+                  fontSize: 80,
                   color: Colors.white)),
           Text(
             'Русско-Бурятский,',
             style: TextStyle(
                 fontFamily: 'Arial',
                 fontWeight: FontWeight.w600,
-                fontSize: 28,
+                fontSize: 26,
                 color: Colors.white),
           ),
           Text(
@@ -50,7 +38,7 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
             style: TextStyle(
                 fontFamily: 'Arial',
                 fontWeight: FontWeight.w600,
-                fontSize: 28,
+                fontSize: 26,
                 color: Colors.white),
           ),
           Text(
@@ -58,7 +46,7 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
             style: TextStyle(
                 fontFamily: 'Arial',
                 fontWeight: FontWeight.w600,
-                fontSize: 28,
+                fontSize: 26,
                 color: Colors.white),
           )
         ],
