@@ -164,27 +164,30 @@ class _SearchDictionaryWordWidgetState
                               autocorrect: true,
                               controller: textController,
                               decoration: InputDecoration(
-                                  suffixIcon: Container(
-                                    height: 60,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(5),
-                                          bottomRight: Radius.circular(5)),
-                                      border:
-                                          Border.all(color: Constants.color),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        letterWidget(
-                                            letter: 'ү', isCenter: false),
-                                        letterWidget(
-                                            letter: 'һ', isCenter: true),
-                                        letterWidget(
-                                            letter: 'ө', isCenter: false)
-                                      ],
-                                    ),
-                                  ),
+                                  suffixIcon: isBur
+                                      ? Container(
+                                          height: 65,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(5),
+                                                bottomRight:
+                                                    Radius.circular(5)),
+                                            border: Border.all(
+                                                color: Constants.color),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              letterWidget(
+                                                  letter: 'ү', isCenter: false),
+                                              letterWidget(
+                                                  letter: 'һ', isCenter: true),
+                                              letterWidget(
+                                                  letter: 'ө', isCenter: false)
+                                            ],
+                                          ),
+                                        )
+                                      : Icon(Icons.abc, color: Colors.white),
                                   focusedBorder: const OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
