@@ -60,35 +60,43 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
                           RouteGenerator.BURYAT_NAME,
                           arguments: Constants.letters_names[index]);
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
                       children: [
-                        Text(
-                          Constants.letters_names[index],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Arial',
-                              fontWeight: FontWeight.w400),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                          child: Text(
+                            Constants.letters_names[index],
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Arial',
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                         const SizedBox(
-                          width: 4,
+                          width: 5,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: const Color.fromRGBO(204, 204, 204, 1),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Text(
-                              Constants.letters_numbers[index],
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3),
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(204, 204, 204, 1),
+                                shape: BoxShape.circle),
+                            child: Center(
+                              child: Text(
+                                Constants.letters_numbers[index],
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

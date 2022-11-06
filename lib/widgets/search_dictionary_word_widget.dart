@@ -101,7 +101,6 @@ class _SearchDictionaryWordWidgetState
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 15,
-                      right: 15,
                     ),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -140,8 +139,10 @@ class _SearchDictionaryWordWidgetState
                         ]),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                      left: 15,
+                    ),
                     child: Text('Словарь',
                         style: Constants.textSearchFormWordStyle),
                   ),
@@ -241,9 +242,6 @@ class _SearchDictionaryWordWidgetState
                               },
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 5,
                         ),
                       ],
                     ),
