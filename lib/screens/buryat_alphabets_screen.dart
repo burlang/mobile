@@ -60,21 +60,16 @@ class _BuryatAlphabetsScreenState extends State<BuryatAlphabetsScreen> {
                           RouteGenerator.BURYAT_NAME,
                           arguments: Constants.letters_names[index]);
                     },
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                          child: Text(
-                            Constants.letters_names[index],
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Arial',
-                                fontWeight: FontWeight.w400),
-                          ),
+                        Text(
+                          Constants.letters_names[index],
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Arial',
+                              fontWeight: FontWeight.w400),
                         ),
                         const SizedBox(
                           width: 5,
