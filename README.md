@@ -1,4 +1,4 @@
-# burlang_demo
+# Burlang
 
 A new Flutter project.
 
