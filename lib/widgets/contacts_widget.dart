@@ -1,6 +1,6 @@
-import 'package:burlang_demo/config/launcher.dart';
-import 'package:burlang_demo/constants/constants.dart';
 import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
+import 'package:burlang_demo/widgets/text_contact_widget.dart';
+import 'package:burlang_demo/widgets/text_mail_widget.dart';
 import 'package:flutter/material.dart';
 
 class ContactsWidget extends StatelessWidget {
@@ -19,24 +19,13 @@ class ContactsWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-              onPressed: () async {
-                await Launcher.launch(
-                    Uri.parse('https://github.com/burlang/mobile'));
-              },
-              child: const Text(
-                'GitHub',
-                style: Constants.textContactStyle,
-              ),
+            TextContactWidget(
+              url: 'https://github.com/burlang/mobile',
+              text: 'GitHub',
             ),
-            TextButton(
-              onPressed: () async {
-                await Launcher.launch(Uri.parse('http://burlang.ru/api/v1'));
-              },
-              child: const Text(
-                'Api',
-                style: Constants.textContactStyle,
-              ),
+            TextContactWidget(
+              url: 'http://burlang.ru/api/v1',
+              text: 'Api',
             ),
           ],
         ),
@@ -44,46 +33,17 @@ class ContactsWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Expanded(
-              child: TextButton(
-                onPressed: () async {
-                  await Launcher.launch(Uri(
-                    path: 'dbulats88@gmail.com',
-                    scheme: 'mailto',
-                  ));
-                },
-                child: const Text(
-                  'dbulats88@gmail.com',
-                  style: Constants.textContactStyle,
-                ),
-              ),
-            ),
+                child: TextMailWidget(
+              email: 'dbulats88@gmail.com',
+            )),
             Expanded(
-              child: TextButton(
-                onPressed: () async {
-                  await Launcher.launch(Uri(
-                    path: 'bairdarmaev@gmail.com',
-                    scheme: 'mailto',
-                  ));
-                },
-                child: const Text(
-                  'bairdarmaev@gmail.com',
-                  style: Constants.textContactStyle,
-                ),
-              ),
-            ),
+                child: TextMailWidget(
+              email: 'bairdarmaev@gmail.com',
+            )),
           ],
         ),
-        TextButton(
-          onPressed: () async {
-            await Launcher.launch(Uri(
-              path: 'bubeevm@gmail.com',
-              scheme: 'mailto',
-            ));
-          },
-          child: const Text(
-            'bubeevm@gmail.com',
-            style: Constants.textContactStyle,
-          ),
+        TextMailWidget(
+          email: 'bubeevm@gmail.com',
         ),
         const SizedBox(
           height: 5,
