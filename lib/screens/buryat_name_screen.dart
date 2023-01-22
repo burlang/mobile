@@ -2,6 +2,7 @@ import 'package:burlang_demo/api/burlang_api.dart';
 import 'package:burlang_demo/config/router.dart';
 import 'package:burlang_demo/models/buryat_name.dart';
 import 'package:burlang_demo/widgets/appbar_widget.dart';
+import 'package:burlang_demo/widgets/contacts_widget.dart';
 import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
 import 'package:burlang_demo/widgets/loader_widget.dart';
 import 'package:burlang_demo/widgets/navigator_widget.dart';
@@ -20,7 +21,7 @@ class BuryatNameScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return Padding(
               padding: const EdgeInsets.all(8),
-              child: Column(
+              child: ListView(
                 children: [
                   NavigatorWidget(
                     subtitle: 'Бурятские имена',
@@ -91,6 +92,7 @@ class BuryatNameScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  ContactsWidget()
                 ],
               ),
             );

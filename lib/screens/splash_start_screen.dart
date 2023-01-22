@@ -1,4 +1,5 @@
 import 'package:burlang_demo/config/router.dart';
+import 'package:burlang_demo/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class SplashStartScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
   }
 
   init() async {
-    await Future.delayed(Duration(milliseconds: 1300)).then((_) {
+    await Future.delayed(Duration(seconds: 2)).then((_) {
       Navigator.pushNamed(context, RouteGenerator.MAIN);
     });
   }
@@ -26,11 +27,31 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 107, 143, 1),
       body: Center(
-        child: Image.asset(
-          'assets/cover.jpg',
-          fit: BoxFit.cover,
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 14,
+          ),
+          Text('Burlang',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 70,
+                  color: Colors.white)),
+          Text(
+            'Русско-Бурятский,',
+            style: Constants.textSplashStyle
+          ),
+          Text(
+            'Бурятско-Русский',
+            style: Constants.textSplashStyle
+          ),
+          Text(
+            'электронный словарь',
+            style: Constants.textSplashStyle
+          )
+        ],
+      )),
     );
   }
 }

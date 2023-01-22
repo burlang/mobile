@@ -15,17 +15,10 @@ class BurlangInitializedNamesState extends BurlangState {
   BurlangInitializedNamesState({this.incomeNames});
 }
 
-class BurlangDataSearchedNamesState extends BurlangState {
-  final String query;
-  final List<BuryatNames> searchedNames;
-  BurlangDataSearchedNamesState({this.searchedNames, this.query});
-}
-
 class BurlangDataSearchedBuryatWordState extends BurlangState {
   final List<SearchWords> buryatWords;
   final List<Translations> translationList;
-  BurlangDataSearchedBuryatWordState(
-      { this.buryatWords, this.translationList});
+  BurlangDataSearchedBuryatWordState({this.buryatWords, this.translationList});
 }
 
 class BurlangDataSearchedRussianWordState extends BurlangState {

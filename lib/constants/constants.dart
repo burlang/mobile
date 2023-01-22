@@ -74,6 +74,12 @@ class Constants {
   static const textContactStyle = TextStyle(
       color: Constants.color, fontSize: 15, fontWeight: FontWeight.normal);
 
+  static const textSplashStyle = TextStyle(
+      fontFamily: 'Arial',
+      fontWeight: FontWeight.w600,
+      fontSize: 24,
+      color: Colors.white);
+
   static const textDrawerStyle =
       TextStyle(color: Colors.white, fontFamily: 'Arial');
 

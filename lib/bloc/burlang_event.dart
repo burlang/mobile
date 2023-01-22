@@ -11,12 +11,6 @@ class BurlangInitializeNames extends BurlangEvent {
   BurlangInitializeNames({this.letter, this.query});
 }
 
-class BurlangSearchName extends BurlangEvent {
-  final String letter;
-  final String query;
-  BurlangSearchName({this.letter, this.query});
-}
-
 class BurlangSearchBuryatWord extends BurlangEvent {
   final String query;
   BurlangSearchBuryatWord({this.query});
