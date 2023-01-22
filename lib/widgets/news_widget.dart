@@ -49,9 +49,7 @@ class _NewsWidgetState extends State<NewsWidget> {
         }
       },
       child: isLoading
-          ? const LoaderWidget(
-              padding: EdgeInsets.only(top: 60),
-            )
+          ? const LoaderWidget(padding: EdgeInsets.only(top: 50, bottom: 30))
           : isError
               ? Container()
               : Column(
