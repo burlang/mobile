@@ -31,7 +31,7 @@ class _SearchBuryatNameWidgetState extends State<SearchBuryatNameWidget> {
             onChanged: widget.onChanged,
             decoration: InputDecoration(
                 border: InputBorder.none,
-                suffixIcon: widget.text.isNotEmpty
+                suffixIcon: controller.text.isNotEmpty
                     ? GestureDetector(
                         child: const Icon(Icons.close, color: Colors.red),
                         onTap: () {
