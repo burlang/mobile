@@ -1,4 +1,4 @@
-package com.example.burlang_demo
+package burlang.ru
 
 import io.flutter.embedding.android.FlutterActivity
 

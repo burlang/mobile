@@ -1,4 +1,4 @@
-import 'package:burlang_demo/widgets/gender_name_container_widget.dart';
+import 'package:burlang_demo/widgets/text_container_widget.dart';
 import 'package:burlang_demo/widgets/text_contact_widget.dart';
 import 'package:burlang_demo/widgets/text_mail_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class ContactsWidget extends StatelessWidget {
           height: 5,
         ),
         TextContainerWidget(
-          text: 'Ⓒ Burlang 2013-2022',
+          text: 'Ⓒ Burlang 2013-2023',
         )
       ]),
     );

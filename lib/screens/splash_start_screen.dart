@@ -36,7 +36,7 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
           Text('Burlang',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 70,
+                  fontSize: 67,
                   color: Colors.white)),
           Text(
             'Русско-Бурятский,',

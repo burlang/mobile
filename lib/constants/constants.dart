@@ -77,7 +77,7 @@ class Constants {
   static const textSplashStyle = TextStyle(
       fontFamily: 'Arial',
       fontWeight: FontWeight.w600,
-      fontSize: 24,
+      fontSize: 23,
       color: Colors.white);
 
   static const textDrawerStyle =
