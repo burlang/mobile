@@ -8,6 +8,7 @@ class ContactsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentYear = DateTime.now().year.toString();
     return Padding(
       padding: const EdgeInsets.only(
         top: 45,
@@ -49,7 +50,7 @@ class ContactsWidget extends StatelessWidget {
           height: 5,
         ),
         TextContainerWidget(
-          text: 'Ⓒ Burlang 2013-2023',
+          text: 'Ⓒ Burlang 2013-$currentYear',
         )
       ]),
     );
