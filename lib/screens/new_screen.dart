@@ -47,8 +47,9 @@ class NewScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: MarkdownBody(
                       onTapLink: (text, url, title) async {
-                          await Launcher.launch(
-                            Uri.parse(url),);
+                        await Launcher.launch(
+                          Uri.parse(url),
+                        );
                       },
                       styleSheet:
                           MarkdownStyleSheet.fromTheme(Theme.of(context))
