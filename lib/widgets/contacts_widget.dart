@@ -25,7 +25,7 @@ class ContactsWidget extends StatelessWidget {
               text: 'GitHub',
             ),
             TextContactWidget(
-              url: 'http://burlang.ru/api/v1',
+              url: 'https://burlang.ru/api/v1',
               text: 'Api',
             ),
           ],
@@ -35,7 +35,7 @@ class ContactsWidget extends StatelessWidget {
           children: [
             Expanded(
                 child: TextMailWidget(
-              email: 'dbulats88@gmail.com',
+              email: 'bulat@damdinov.me',
             )),
             Expanded(
                 child: TextMailWidget(
