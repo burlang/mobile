@@ -1,8 +1,8 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
-import 'package:burlang_demo/constants/constants.dart';
-import 'package:burlang_demo/models/buryat_search_words.dart';
-import 'package:burlang_demo/models/language_translation.dart';
-import 'package:burlang_demo/widgets/loader_widget.dart';
+import 'package:burlang_demo/data/constants/constants.dart';
+import 'package:burlang_demo/data/models/buryat_search_words.dart';
+import 'package:burlang_demo/data/models/language_translation.dart';
+import 'package:burlang_demo/presentation/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
-import 'package:burlang_demo/screens/splash_start_screen.dart';
+import 'package:burlang_demo/data/utils/router.dart';
+import 'package:burlang_demo/presentation/screens/splash_start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'config/router.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
