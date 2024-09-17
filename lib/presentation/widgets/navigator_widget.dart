@@ -1,5 +1,5 @@
-import 'package:burlang_demo/config/router.dart';
-import 'package:burlang_demo/constants/constants.dart';
+import 'package:burlang_demo/data/utils/router.dart';
+import 'package:burlang_demo/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class NavigatorWidget extends StatelessWidget {

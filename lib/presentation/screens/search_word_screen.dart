@@ -1,10 +1,8 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
-import 'package:burlang_demo/config/router.dart';
-import 'package:burlang_demo/constants/constants.dart';
-import 'package:burlang_demo/widgets/contacts_widget.dart';
-import 'package:burlang_demo/widgets/drawer_widget.dart';
-import 'package:burlang_demo/widgets/news_widget.dart';
-import 'package:burlang_demo/widgets/search_dictionary_word_widget.dart';
+import 'package:burlang_demo/presentation/widgets/contacts_widget.dart';
+import 'package:burlang_demo/presentation/widgets/drawer_widget.dart';
+import 'package:burlang_demo/presentation/widgets/news_widget.dart';
+import 'package:burlang_demo/presentation/widgets/search_dictionary_word_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/appbar_widget.dart';

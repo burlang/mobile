@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:burlang_demo/api/burlang_api.dart';
-import 'package:burlang_demo/models/buryat_names.dart';
-import 'package:burlang_demo/models/buryat_search_words.dart';
-import 'package:burlang_demo/models/language_translation.dart';
-import 'package:burlang_demo/models/news.dart';
+import 'package:burlang_demo/data/models/buryat_names.dart';
+import 'package:burlang_demo/data/models/buryat_search_words.dart';
+import 'package:burlang_demo/data/models/language_translation.dart';
+import 'package:burlang_demo/data/models/news.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 part 'burlang_event.dart';

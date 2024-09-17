@@ -1,14 +1,16 @@
-import 'package:burlang_demo/screens/buryat_name_screen.dart';
-import 'package:burlang_demo/screens/buryat_alphabets_screen.dart';
-import 'package:burlang_demo/screens/new_screen.dart';
-import 'package:burlang_demo/screens/search_word_screen.dart';
-import 'package:burlang_demo/screens/buryat_names_screen.dart';
+import 'package:burlang_demo/presentation/screens/buryat_name_screen.dart';
+import 'package:burlang_demo/presentation/screens/buryat_alphabets_screen.dart';
+import 'package:burlang_demo/presentation/screens/favorite_words_screen.dart';
+import 'package:burlang_demo/presentation/screens/new_screen.dart';
+import 'package:burlang_demo/presentation/screens/search_word_screen.dart';
+import 'package:burlang_demo/presentation/screens/buryat_names_screen.dart';
 import 'package:flutter/material.dart';
-import '../screens/news_screen.dart';
+import '../../presentation/screens/news_screen.dart';
 
 class RouteGenerator {
   static const SPLASH = '/';
   static const MAIN = 'main';
+  static const FAVORITE_WORDS = 'favorite_words';
   static const LETTERS_NAMES = 'buryat_names';
   static const BURYAT_NAME = 'buryat_name';
   static const BURYAT_NAME_DISCRIPTION = 'buryat_name_discription';
@@ -23,6 +25,9 @@ class RouteGenerator {
 
       case LETTERS_NAMES:
         return MaterialPageRoute(builder: (_) => const BuryatAlphabetsScreen());
+
+      case FAVORITE_WORDS:
+        return MaterialPageRoute(builder: (_) => const FavoriteWordsScreen());
 
       case BURYAT_NAME:
         return MaterialPageRoute(

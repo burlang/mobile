@@ -1,6 +1,6 @@
-import 'package:burlang_demo/widgets/text_container_widget.dart';
-import 'package:burlang_demo/widgets/text_contact_widget.dart';
-import 'package:burlang_demo/widgets/text_mail_widget.dart';
+import 'package:burlang_demo/presentation/widgets/text_container_widget.dart';
+import 'package:burlang_demo/presentation/widgets/text_contact_widget.dart';
+import 'package:burlang_demo/presentation/widgets/text_mail_widget.dart';
 import 'package:flutter/material.dart';
 
 class ContactsWidget extends StatelessWidget {

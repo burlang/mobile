@@ -1,5 +1,5 @@
-import 'package:burlang_demo/config/launcher.dart';
-import 'package:burlang_demo/constants/constants.dart';
+import 'package:burlang_demo/data/constants/constants.dart';
+import 'package:burlang_demo/data/utils/launcher.dart';
 import 'package:flutter/material.dart';
 
 class TextContactWidget extends StatelessWidget {

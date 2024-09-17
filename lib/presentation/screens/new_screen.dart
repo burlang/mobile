@@ -1,11 +1,12 @@
+
 import 'package:burlang_demo/api/burlang_api.dart';
-import 'package:burlang_demo/config/launcher.dart';
-import 'package:burlang_demo/config/router.dart';
-import 'package:burlang_demo/models/new.dart';
-import 'package:burlang_demo/widgets/appbar_widget.dart';
-import 'package:burlang_demo/widgets/contacts_widget.dart';
-import 'package:burlang_demo/widgets/loader_widget.dart';
-import 'package:burlang_demo/widgets/navigator_widget.dart';
+import 'package:burlang_demo/data/utils/launcher.dart';
+import 'package:burlang_demo/data/utils/router.dart';
+import 'package:burlang_demo/data/models/new.dart';
+import 'package:burlang_demo/presentation/widgets/appbar_widget.dart';
+import 'package:burlang_demo/presentation/widgets/contacts_widget.dart';
+import 'package:burlang_demo/presentation/widgets/loader_widget.dart';
+import 'package:burlang_demo/presentation/widgets/navigator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';

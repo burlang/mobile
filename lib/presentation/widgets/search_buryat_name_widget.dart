@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import '../../data/constants/constants.dart';
 
 class SearchBuryatNameWidget extends StatefulWidget {
   final String text;

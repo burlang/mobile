@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:burlang_demo/models/buryat_name.dart';
-import 'package:burlang_demo/models/buryat_names.dart';
-import 'package:burlang_demo/models/buryat_search_words.dart';
-import 'package:burlang_demo/models/language_translation.dart';
-import 'package:burlang_demo/models/new.dart';
-import 'package:burlang_demo/models/news.dart';
+import 'package:burlang_demo/data/models/buryat_name.dart';
+import 'package:burlang_demo/data/models/buryat_names.dart';
+import 'package:burlang_demo/data/models/buryat_search_words.dart';
+import 'package:burlang_demo/data/models/language_translation.dart';
+import 'package:burlang_demo/data/models/new.dart';
+import 'package:burlang_demo/data/models/news.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,9 +1,9 @@
 import 'package:burlang_demo/bloc/burlang_bloc.dart';
-import 'package:burlang_demo/widgets/appbar_widget.dart';
-import 'package:burlang_demo/widgets/contacts_widget.dart';
-import 'package:burlang_demo/widgets/drawer_widget.dart';
-import 'package:burlang_demo/widgets/navigator_widget.dart';
-import 'package:burlang_demo/widgets/news_widget.dart';
+import 'package:burlang_demo/presentation/widgets/appbar_widget.dart';
+import 'package:burlang_demo/presentation/widgets/contacts_widget.dart';
+import 'package:burlang_demo/presentation/widgets/drawer_widget.dart';
+import 'package:burlang_demo/presentation/widgets/navigator_widget.dart';
+import 'package:burlang_demo/presentation/widgets/news_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

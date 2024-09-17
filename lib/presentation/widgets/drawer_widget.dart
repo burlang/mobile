@@ -1,5 +1,5 @@
-import 'package:burlang_demo/config/router.dart';
-import 'package:burlang_demo/constants/constants.dart';
+import 'package:burlang_demo/data/utils/router.dart';
+import 'package:burlang_demo/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -16,6 +16,13 @@ class DrawerWidget extends StatelessWidget {
           title: const Text('Словарь', style: Constants.textDrawerStyle),
           onTap: () {
             Navigator.of(context).pushNamed(RouteGenerator.MAIN);
+          },
+        ),
+        ListTile(
+          title:
+              const Text('Избранные слова', style: Constants.textDrawerStyle),
+          onTap: () {
+            Navigator.of(context).pushNamed(RouteGenerator.FAVORITE_WORDS);
           },
         ),
         ListTile(
