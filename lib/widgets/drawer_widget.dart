@@ -26,6 +26,11 @@ class DrawerWidget extends StatelessWidget {
           },
         ),
         ListTile(
+          title:
+              const Text('Избранные слова', style: Constants.textDrawerStyle),
+          onTap: () {},
+        ),
+        ListTile(
           title: const Text('Новости', style: Constants.textDrawerStyle),
           onTap: () {
             Navigator.of(context).pushNamed(RouteGenerator.NEWS);
